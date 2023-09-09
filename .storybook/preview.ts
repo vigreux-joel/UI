@@ -3,8 +3,13 @@ import type { Preview } from '@storybook/react';
 import { withThemeByClassName } from '@storybook/addon-styling';
 
 import '../src/index.css';
+import {Args, PartialStoryFn, StoryContext} from "@storybook/csf";
+import {Renderer} from "react-dom";
 
-const preview: Preview = {
+const preview: {
+  decorators: ((fn: PartialStoryFn<Renderer, Args>, c: StoryContext<Renderer, Args>) => Renderer["storyResult"])[];
+  parameters: { controls: { matchers: { date: RegExp; color: RegExp } }; actions: { argTypesRegex: string } }
+} = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
