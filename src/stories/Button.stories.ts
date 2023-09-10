@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import  Button  from '@/components/Button';
+import {faPlus} from "@fortawesome/pro-regular-svg-icons";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -16,7 +17,8 @@ const meta = {
   argTypes: {
     backgroundColor: { control: 'color' },
     size: { options: ['small', 'medium', 'large'], control: 'radio' },
-    type: { options: ['button', 'submit', 'reset'], control: 'radio' }
+    type: { options: ['button', 'submit', 'reset', undefined], control: 'radio' },
+    icon: { control: 'object' },
   },
 } satisfies Meta<typeof Button>;
 
@@ -24,11 +26,20 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Filled: Story = {
+
+export const FilledWithoutIcon: Story = {
   args: {
-    label: 'Label',
+    label: 'Label'
   },
 };
+export const FilledWithIcon: Story = {
+  args: {
+    label: 'Label',
+    icon: faPlus
+  },
+};
+
+
 
 export const Outlined: Story = {
   args: {

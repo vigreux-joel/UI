@@ -1,11 +1,14 @@
 import type { FunctionComponent } from "react";
 import classNames from "classnames";
 import Icon from "@/components/Icon";
+import {faPlus, IconDefinition} from "@fortawesome/pro-regular-svg-icons";
+
 
 interface ButtonProps {
   href?: string;
   title?: string;
   label: string;
+  icon?: IconDefinition;
   className?: string;
   outlined?: boolean;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
@@ -14,6 +17,7 @@ interface ButtonProps {
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
+                                                    icon,
                                                   href,
                                                   title,
                                                   label,
@@ -54,7 +58,7 @@ const Button: FunctionComponent<ButtonProps> = ({
           title={title}
           className={classNames(
               className,
-              "bg-primary-40 rounded-full hover:bg-primary-50 active:bg-primary-50 focus:bg-primary-50 hover:shadow-1  px-6 py-2.5",
+              "bg-primary-40 flex gap-2 justify-center items-center rounded-full hover:bg-primary-50 active:bg-primary-50 focus:bg-primary-50 hover:shadow-1  px-6 py-2.5",
               {
                   "no-underline": href,
               }
@@ -62,6 +66,7 @@ const Button: FunctionComponent<ButtonProps> = ({
           {...buttonProps}
           {...linkProps}
       >
+          {icon && ( <Icon icon={faPlus} className="h-[18px] w-[18px] text-primary-100"/>)}
         <span className="text-primary-100">{label}</span>
       </ElementType>
   );
