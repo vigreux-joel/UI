@@ -10,13 +10,17 @@ interface ButtonProps {
   label: string;
   icon?: IconDefinition;
   className?: string;
+  elevated?: boolean;
   outlined?: boolean;
+  tonal?: boolean
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   size?: 'small' | 'medium' | 'large';
   type?: "button" | "submit" | "reset" | undefined;
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
+    elevated,
+    tonal,
                                                     icon,
                                                   href,
                                                   title,
@@ -58,9 +62,12 @@ const Button: FunctionComponent<ButtonProps> = ({
           title={title}
           className={classNames(
               className,
-              "bg-primary-40 flex gap-2 justify-center items-center rounded-full hover:bg-primary-50 active:bg-primary-50 focus:bg-primary-50 hover:shadow-1  px-6 py-2.5",
+              "flex gap-2 justify-center items-center rounded-full  active:bg-primary-50 focus:bg-primary-50 hover:shadow-1  px-6 py-2.5",
               {
                   "no-underline": href,
+                  "": elevated,
+                  "bg-primary hover:bg-primary/50": !tonal && !outlined,
+                  "bg-primary-80 ": tonal,
               }
           )}
           {...buttonProps}

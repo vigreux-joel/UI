@@ -44,6 +44,7 @@ export const FilledWithIcon: Story = {
 export const Outlined: Story = {
   args: {
     label: 'Label',
+    outlined: true,
   },
 };
 
@@ -61,5 +62,6 @@ export const Elevated: Story = {
 export const Tonal: Story = {
   args: {
     label: 'Label',
+    tonal: true,
   },
 };
