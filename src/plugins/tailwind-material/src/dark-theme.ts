@@ -3,7 +3,7 @@ import Color from "color";
 
 
 
-export function getDarkTheme(colors:  Record<string, string>, mode: "class" | "media")  {
+export function darkTheme(colors:  Record<string, string>, mode: "class" | "media")  {
 
 
     const stylesToAdd: { [key: string]: { [key: string]: any } } = {

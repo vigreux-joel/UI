@@ -13,6 +13,7 @@ interface ButtonProps {
   className?: string;
   elevated?: boolean;
   outlined?: boolean;
+  text?: boolean
   tonal?: boolean
   onClick?: (e: React.MouseEvent<HTMLElement>) => void | undefined;
   size?: 'small' | 'medium' | 'large';
@@ -23,6 +24,7 @@ const Button: FunctionComponent<ButtonProps> = ({
     elevated,
     tonal,
     disabled,
+    text,
                                                     icon,
                                                   href,
                                                   title,
@@ -70,15 +72,15 @@ const Button: FunctionComponent<ButtonProps> = ({
                   "hover:shadow-1": !disabled,
                   "no-underline": href,
                   "": elevated,
-                  "interactive-bg-primary": !tonal && !outlined,
-                  "interactive-bg-secondary": tonal,
+                  "interactive-bg-primary": !text && !tonal && !outlined,
+                  "interactive-bg-secondary-container": tonal,
               }
           )}
           {...buttonProps}
           {...linkProps}
       >
           {icon && ( <Icon icon={faPlus} className="h-[18px] w-[18px] text-primary-100"/>)}
-        <span className="">{label}</span>
+        <span className=''>{label}</span>
       </ElementType>
   );
 };

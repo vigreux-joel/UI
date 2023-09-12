@@ -1,8 +1,9 @@
 import type { Config, } from 'tailwindcss'
-import {createMaterialTailwind} from './src/plugins/tailwind_material_color';
+import {createMaterialTheme} from "./src/plugins/tailwind-material/src/main";
 
 
-const materialTailwind =  createMaterialTailwind({
+
+const materialTailwind = createMaterialTheme({
   primary: "#6750A4",
   secondary: "#625B71",
   tertiary: "#7D5260",

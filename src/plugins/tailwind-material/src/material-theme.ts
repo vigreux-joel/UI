@@ -6,11 +6,8 @@ import {
 } from "@material/material-color-utilities";
 
 
-/**
- *
- * @param {Record<string, string>} colorsMap Values must be hex colors and 'primary' must be present.
- */
-export const getMaterialTheme = (colorsMap: { primary: any; secondary: string; tertiary: string; }) => {
+
+export const materialTheme = (colorsMap: { primary: any; secondary: string; tertiary: string; }) => {
     const { primary, secondary ,tertiary } = colorsMap;
 
     const source = argbFromHex(primary);
