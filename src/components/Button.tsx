@@ -62,12 +62,12 @@ const Button: FunctionComponent<ButtonProps> = ({
           title={title}
           className={classNames(
               className,
-              "flex gap-2 justify-center items-center rounded-full  active:bg-primary-50 focus:bg-primary-50 hover:shadow-1  px-6 py-2.5",
+              "flex gap-2 justify-center active:bg-primary-50 focus:bg-primary-50 hover:shadow-1  px-6 py-2.5",
               {
                   "no-underline": href,
                   "": elevated,
-                  "bg-primary hover:bg-primary/50": !tonal && !outlined,
-                  "bg-primary-80 ": tonal,
+                  "interactive-surface-primary": !tonal && !outlined,
+                  "interactive-surface-secondary": tonal,
               }
           )}
           {...buttonProps}

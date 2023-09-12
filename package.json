@@ -22,6 +22,7 @@
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
     "classnames": "^2.3.2",
+    "color": "^4.2.3",
     "next": "13.4.19",
     "postcss": "8.4.29",
     "react": "18.2.0",
@@ -39,6 +40,15 @@
     "@storybook/nextjs": "^7.4.0",
     "@storybook/react": "^7.4.0",
     "@storybook/testing-library": "^0.2.0",
-    "storybook": "^7.4.0"
+    "@types/chroma-js": "^2.4.1",
+    "@types/color": "^3.0.4",
+    "chroma-js": "^2.4.2",
+    "color-composite": "^1.0.2",
+    "color-parse": "^1.4.3",
+    "i": "^0.3.7",
+    "storybook": "^7.4.0",
+    "storybook-tailwind-dark-mode": "^1.0.22",
+    "tailwind-material-colors": "^1.0.1",
+    "tailwind-material-surfaces": "^1.2.0"
   }
 }
