@@ -18,7 +18,6 @@ const meta = {
     size: { options: ['small', 'medium', 'large'], control: 'radio' },
     type: { options: ['button', 'submit', 'reset', undefined], control: 'radio' },
     icon: { control: 'object' },
-
   },
 } satisfies Meta<typeof Button>;
 

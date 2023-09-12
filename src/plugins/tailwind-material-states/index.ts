@@ -75,7 +75,6 @@ export default function TailwindMaterialStates(colors: Record<string, string>) {
 
                 materialColors.forEach((colorName) => {
 
-                    console.log(colorName)
                     newComponents[`.${surfacePrefix}-${colorName}`] = {
                         ...(surfacePrefix === "bg"
                             ? {}
@@ -99,16 +98,15 @@ export default function TailwindMaterialStates(colors: Record<string, string>) {
                             : {}),
                         ...(disabledStyles
                             ? {
-                                [`@apply disabled:text-on-${colorName}/[${disabledStyles.textOpacity}]`]:
+                                [`@apply disabled:text-on-surface/[${disabledStyles.textOpacity}]`]:
                                     {},
-                                [`@apply disabled:bg-on-${colorName}/[${disabledStyles.backgroundOpacity}]`]:
+                                [`@apply disabled:bg-on-surface/[${disabledStyles.backgroundOpacity}]`]:
                                     {},
                             }
                             : {}),
                     };
                 });
 
-                console.log(newComponents)
                 addComponents(newComponents);
             }, {}),
 

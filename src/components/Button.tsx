@@ -6,11 +6,12 @@ import {faPlus, IconDefinition} from "@fortawesome/pro-regular-svg-icons";
 
 interface ButtonProps {
   href?: string;
+  disabled?: boolean;
   title?: string;
   label: string;
   icon?: IconDefinition;
   className?: string;
-  // elevated?: boolean;
+  elevated?: boolean;
   outlined?: boolean;
   tonal?: boolean
   onClick?: (e: React.MouseEvent<HTMLElement>) => void | undefined;
@@ -19,8 +20,9 @@ interface ButtonProps {
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
-    // elevated,
+    elevated,
     tonal,
+    disabled,
                                                     icon,
                                                   href,
                                                   title,
@@ -58,14 +60,16 @@ const Button: FunctionComponent<ButtonProps> = ({
 
   return (
       <ElementType
+          disabled={disabled}
           href={href}
           title={title}
           className={classNames(
               className,
-              "flex gap-2 justify-center  items-center rounded-full active:bg-primary-50 focus:bg-primary-50 hover:shadow-1  px-6 py-2.5",
+              "flex gap-2 justify-center  items-center rounded-full active:bg-primary-50 focus:bg-primary-50   px-6 py-2.5",
               {
+                  "hover:shadow-1": !disabled,
                   "no-underline": href,
-                  // "": elevated,
+                  "": elevated,
                   "interactive-bg-primary": !tonal && !outlined,
                   "interactive-bg-secondary": tonal,
               }
@@ -74,7 +78,7 @@ const Button: FunctionComponent<ButtonProps> = ({
           {...linkProps}
       >
           {icon && ( <Icon icon={faPlus} className="h-[18px] w-[18px] text-primary-100"/>)}
-        <span className="text-primary-100">{label}</span>
+        <span className="">{label}</span>
       </ElementType>
   );
 };
