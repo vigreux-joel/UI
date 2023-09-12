@@ -15,10 +15,10 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
     size: { options: ['small', 'medium', 'large'], control: 'radio' },
     type: { options: ['button', 'submit', 'reset', undefined], control: 'radio' },
     icon: { control: 'object' },
+
   },
 } satisfies Meta<typeof Button>;
 

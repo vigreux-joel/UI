@@ -24,8 +24,8 @@ export default function TailwindMaterialStates(colors: Record<string, string>) {
         disabledStyles,
         transition,
     } = {
-        surfacePrefix: "surface",
-        interactiveSurfacePrefix: "interactive-surface",
+        surfacePrefix: "bg",
+        interactiveSurfacePrefix: "interactive-bg",
         disabledStyles: {
             textOpacity: 0.38,
             backgroundOpacity: 0.12,

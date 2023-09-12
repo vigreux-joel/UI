@@ -1,10 +1,9 @@
-import type { Preview } from '@storybook/react';
-
-import { withThemeByClassName } from '@storybook/addon-styling';
+import type { Preview, Renderer } from '@storybook/react';
 
 import '../src/index.css';
 import {Args, PartialStoryFn, StoryContext} from "@storybook/csf";
-import {Renderer} from "react-dom";
+import { withThemeByClassName } from "@storybook/addon-themes";
+
 
 const preview: {
   decorators: ((fn: PartialStoryFn<Renderer, Args>, c: StoryContext<Renderer, Args>) => Renderer["storyResult"])[];
@@ -20,17 +19,15 @@ const preview: {
     },
   },
 
-  decorators: [
-    // Adds theme switching support.
-    // NOTE: requires setting "darkMode" to "class" in your tailwind config
-    withThemeByClassName({
-      themes: {
-        light: 'light',
-        dark: 'dark',
-      },
-      defaultTheme: 'light',
-    }),
-  ],
+     decorators: [
+    withThemeByClassName<Renderer>({
+          themes: {
+        light: "",
+            dark: "dark",
+         },
+    defaultTheme: "light",
+      }),
+ ]
 };
 
 export default preview;

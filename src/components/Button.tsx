@@ -10,16 +10,16 @@ interface ButtonProps {
   label: string;
   icon?: IconDefinition;
   className?: string;
-  elevated?: boolean;
+  // elevated?: boolean;
   outlined?: boolean;
   tonal?: boolean
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void | undefined;
   size?: 'small' | 'medium' | 'large';
   type?: "button" | "submit" | "reset" | undefined;
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
-    elevated,
+    // elevated,
     tonal,
                                                     icon,
                                                   href,
@@ -53,7 +53,7 @@ const Button: FunctionComponent<ButtonProps> = ({
   let buttonProps: any = {};
   if(!href) {
     buttonProps.type = type
-    buttonProps.onClick = {handleClick}
+    buttonProps.onClick = handleClick
   }
 
   return (
@@ -62,12 +62,12 @@ const Button: FunctionComponent<ButtonProps> = ({
           title={title}
           className={classNames(
               className,
-              "flex gap-2 justify-center active:bg-primary-50 focus:bg-primary-50 hover:shadow-1  px-6 py-2.5",
+              "flex gap-2 justify-center  items-center rounded-full active:bg-primary-50 focus:bg-primary-50 hover:shadow-1  px-6 py-2.5",
               {
                   "no-underline": href,
-                  "": elevated,
-                  "interactive-surface-primary": !tonal && !outlined,
-                  "interactive-surface-secondary": tonal,
+                  // "": elevated,
+                  "interactive-bg-primary": !tonal && !outlined,
+                  "interactive-bg-secondary": tonal,
               }
           )}
           {...buttonProps}
