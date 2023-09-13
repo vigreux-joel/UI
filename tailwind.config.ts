@@ -4,8 +4,8 @@ import { createMaterialTheme } from "./src/plugins/tailwind-material/src/main";
 const materialTailwind = createMaterialTheme(
   {
     primary: "#6750A4",
-    secondary: "#5cca4c",
-    tertiary: "#7D5260",
+    secondary: "#958DA5",
+    tertiary: "#B58392",
   },
   "class"
 );

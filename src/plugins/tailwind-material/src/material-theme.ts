@@ -32,12 +32,19 @@ export enum Variant {
 
 export const materialTheme = (colorsMap: {
   primary: any;
-  secondary: string;
-  tertiary: string;
+  secondary?: string;
+  tertiary?: string;
 }) => {
   const primary = argbFromHex(colorsMap.primary);
-  const secondary = argbFromHex(colorsMap.secondary);
-  const tertiary = argbFromHex(colorsMap.tertiary);
+
+  let secondary: number | undefined;
+  if (colorsMap.secondary != null) {
+    secondary = argbFromHex(colorsMap.secondary);
+  }
+  let tertiary: number | undefined;
+  if (colorsMap.tertiary != null) {
+    tertiary = argbFromHex(colorsMap.tertiary);
+  }
 
   const colorPalette = CorePalette.fromColors({
     primary: primary,
@@ -49,8 +56,8 @@ export const materialTheme = (colorsMap: {
   const darkScheme = Scheme.darkFromCorePalette(colorPalette);
 
   const p = TonalPalette.fromHct(Hct.fromInt(primary));
-  const s = TonalPalette.fromHct(Hct.fromInt(primary));
-  const t = TonalPalette.fromHct(Hct.fromInt(primary));
+  const s = TonalPalette.fromHct(Hct.fromInt(secondary ? secondary : primary));
+  const t = TonalPalette.fromHct(Hct.fromInt(tertiary ? tertiary : primary));
 
   const colors: Record<string, string> = {
     transparent: "transparent",
