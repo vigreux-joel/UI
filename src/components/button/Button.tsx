@@ -1,5 +1,4 @@
 import type { FunctionComponent } from "react";
-import classNames from "classnames";
 import Icon from "@/components/Icon";
 import { faPlus, IconDefinition } from "@fortawesome/pro-regular-svg-icons";
 import { ClassNameHelper } from "../utils/ClassNameHelper";
@@ -12,16 +11,14 @@ export enum ButtonVariant {
   FilledTonal = "tonal",
 }
 
-interface ButtonProps {
+export interface ButtonProps {
   href?: string;
   disabled?: boolean;
   title?: string;
   label: string;
   icon?: IconDefinition;
-  className?: string;
-  variant: ButtonVariant;
+  variant?: ButtonVariant;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void | undefined;
-  size?: "small" | "medium" | "large";
   type?: "button" | "submit" | "reset" | undefined;
 }
 
@@ -32,9 +29,7 @@ const Button: FunctionComponent<ButtonProps> = ({
   href,
   title,
   label,
-  className = "",
   onClick,
-  size,
   type,
 }) => {
   // Détermine le type de l'élément à rendre : un bouton ou un lien
@@ -60,10 +55,26 @@ const Button: FunctionComponent<ButtonProps> = ({
 
   const getButtonClass = ClassNameHelper.getFromVariant<ButtonVariant>(
     variant,
-    "rounded-full",
+    "button group rounded-full",
     {
-      [ButtonVariant.Elevated]: ["bg-surface-container-low"],
-      [ButtonVariant.Filled]: ["bg-primary"],
+      [ButtonVariant.Elevated]: [
+        "",
+        {
+          "bg-surface-container-low": !disabled,
+        },
+      ],
+      [ButtonVariant.Filled]: [
+        "",
+        {
+          "bg-primary": !disabled,
+        },
+      ],
+      [ButtonVariant.FilledTonal]: [
+        "",
+        {
+          "bg-secondary-container": !disabled,
+        },
+      ],
     }
   );
 
@@ -72,15 +83,121 @@ const Button: FunctionComponent<ButtonProps> = ({
     "state-layer flex gap-2 justify-center rounded-full  items-center px-6 py-2.5",
     {
       elevated: [
-        "state-primary shadow-1 group-hover:shadow-2",
+        " ",
         {
           "group-disabled:bg-on-surface/[0.12]": disabled,
+          "state-primary shadow-1  group-hover:shadow-2": !disabled,
         },
       ],
       [ButtonVariant.Filled]: [
-        "state-on-primary",
+        "",
         {
           "group-disabled:bg-on-surface/[0.12]": disabled,
+          "state-on-primary group-hover:shadow-1": !disabled,
+        },
+      ],
+      [ButtonVariant.FilledTonal]: [
+        "",
+        {
+          "group-disabled:bg-on-surface/[0.12]": disabled,
+          "state-on-secondary-container group-hover:shadow-1": !disabled,
+        },
+      ],
+      [ButtonVariant.Outlined]: [
+        " border",
+        {
+          "group-disabled:border-on-surface/[0.12]": disabled,
+          "state-primary border-outline state-primary group-focus:border-primary":
+            !disabled,
+        },
+      ],
+      [ButtonVariant.Text]: [
+        "",
+        {
+          "state-primary": !disabled,
+        },
+      ],
+    }
+  );
+
+  const getIconClass = ClassNameHelper.getFromVariant<ButtonVariant>(
+    variant,
+    "icon h-[18px] w-[18px]",
+    {
+      [ButtonVariant.Elevated]: [
+        "",
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[38%]": disabled,
+        },
+      ],
+      [ButtonVariant.Filled]: [
+        "",
+        {
+          "text-on-primary": !disabled,
+          "group-disabled:text-on-surface/[38%]": disabled,
+        },
+      ],
+      [ButtonVariant.FilledTonal]: [
+        "",
+        {
+          "text-on-secondary-container": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+      [ButtonVariant.Outlined]: [
+        "",
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+      [ButtonVariant.Text]: [
+        "",
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+    }
+  );
+  const getLabelTextClass = ClassNameHelper.getFromVariant<ButtonVariant>(
+    variant,
+    "label-text",
+    {
+      [ButtonVariant.Elevated]: [
+        "",
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[38%]": disabled,
+        },
+      ],
+      [ButtonVariant.Filled]: [
+        "",
+        {
+          "text-on-primary": !disabled,
+          "group-disabled:text-on-surface/[38%]": disabled,
+        },
+      ],
+      [ButtonVariant.FilledTonal]: [
+        "",
+        {
+          "text-on-secondary-container": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+      [ButtonVariant.Outlined]: [
+        "",
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+      [ButtonVariant.Text]: [
+        "",
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
         },
       ],
     }
@@ -96,33 +213,8 @@ const Button: FunctionComponent<ButtonProps> = ({
       {...linkProps}
     >
       <span className={getStateLayerClass}>
-        {icon && (
-          <Icon
-            icon={faPlus}
-            className={classNames("icon h-[18px] w-[18px]", {
-              "text-primary ": variant == ButtonVariant.Elevated,
-              "text-on-primary": variant == ButtonVariant.Filled,
-              "group-disabled:text-on-surface":
-                variant == ButtonVariant.Filled && disabled,
-              "": variant == ButtonVariant.FilledTonal,
-              "": variant == ButtonVariant.Outlined,
-              "": variant == ButtonVariant.Text,
-            })}
-          />
-        )}
-        <span
-          className={classNames("label-text", {
-            "text-primary ": variant == ButtonVariant.Elevated,
-            "text-on-primary": variant == ButtonVariant.Filled,
-            "group-disabled:text-on-surface":
-              variant == ButtonVariant.Filled && disabled,
-            "": variant == ButtonVariant.FilledTonal,
-            "": variant == ButtonVariant.Outlined,
-            "": variant == ButtonVariant.Text,
-          })}
-        >
-          {label}
-        </span>
+        {icon && <Icon icon={faPlus} className={getIconClass} />}
+        <span className={getLabelTextClass}>{label}</span>
       </span>
     </ElementType>
   );
