@@ -1,5 +1,5 @@
 import type { FunctionComponent } from "react";
-import Icon from "@/components/Icon";
+import { Icon } from "../icon/icon";
 import { faPlus, IconDefinition } from "@fortawesome/pro-regular-svg-icons";
 import { ClassNameHelper } from "../utils/ClassNameHelper";
 
@@ -22,7 +22,7 @@ export interface ButtonProps {
   type?: "button" | "submit" | "reset" | undefined;
 }
 
-const Button: FunctionComponent<ButtonProps> = ({
+export const Button: FunctionComponent<ButtonProps> = ({
   variant = ButtonVariant.Filled,
   disabled,
   icon,
@@ -219,5 +219,3 @@ const Button: FunctionComponent<ButtonProps> = ({
     </ElementType>
   );
 };
-
-export default Button;
