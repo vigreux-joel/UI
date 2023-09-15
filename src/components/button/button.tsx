@@ -1,6 +1,6 @@
 import type { FunctionComponent } from "react";
 import { Icon } from "../icon/icon";
-import { faPlus, IconDefinition } from "@fortawesome/pro-regular-svg-icons";
+import { IconDefinition } from "@fortawesome/pro-regular-svg-icons";
 import { ClassNameHelper } from "../utils/ClassNameHelper";
 
 export enum ButtonVariant {
@@ -213,7 +213,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
       {...linkProps}
     >
       <span className={getStateLayerClass}>
-        {icon && <Icon icon={faPlus} className={getIconClass} />}
+        {icon && <Icon icon={icon} className={getIconClass} />}
         <span className={getLabelTextClass}>{label}</span>
       </span>
     </ElementType>

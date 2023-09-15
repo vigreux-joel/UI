@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { ClassNameHelper } from "@/components/utils/ClassNameHelper";
 import { TabsVariant } from "@/components/tabs/tabs";
 import { Icon } from "@/components/icon/icon";
-import { faPlus, IconDefinition } from "@fortawesome/pro-regular-svg-icons";
+import { IconDefinition } from "@fortawesome/pro-regular-svg-icons";
 
 export interface TabProps {
   selected?: boolean;
@@ -45,24 +45,40 @@ export const Tab: FunctionComponent<TabProps> = ({
     buttonProps.onClick = handleClick;
   }
 
-  const getTabClass = ClassNameHelper.getFromVariant<TabsVariant>(variant, "", {
-    [TabsVariant.Primary]: [],
-    [TabsVariant.Secondary]: [],
-  });
-
-  const getStateLayerClass = ClassNameHelper.getFromVariant<TabsVariant>(
+  const getTabClass = ClassNameHelper.getFromVariant<TabsVariant>(
     variant,
-    "",
+    "bg-surface",
     {
       [TabsVariant.Primary]: [],
       [TabsVariant.Secondary]: [],
     }
   );
+
+  const getStateLayerClass = ClassNameHelper.getFromVariant<TabsVariant>(
+    variant,
+    "px-4 flex flex-col gap-0.5 justify-end items-center",
+    {
+      [TabsVariant.Primary]: [
+        "",
+        {
+          "pt-2.5 pb-2": Boolean(label && icon),
+          "state-on-surface": !selected,
+          "state-primary": selected,
+        },
+      ],
+      [TabsVariant.Secondary]: [],
+    }
+  );
   const getIconClass = ClassNameHelper.getFromVariant<TabsVariant>(
     variant,
-    "",
+    "h-5 w-5",
     {
-      [TabsVariant.Primary]: [],
+      [TabsVariant.Primary]: [
+        "",
+        {
+          "text-primary": selected,
+        },
+      ],
       [TabsVariant.Secondary]: [],
     }
   );
@@ -70,7 +86,12 @@ export const Tab: FunctionComponent<TabProps> = ({
     variant,
     "",
     {
-      [TabsVariant.Primary]: [],
+      [TabsVariant.Primary]: [
+        "",
+        {
+          "text-primary": selected,
+        },
+      ],
       [TabsVariant.Secondary]: [],
     }
   );
@@ -83,7 +104,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       {...linkProps}
     >
       <span className={getStateLayerClass}>
-        {icon && <Icon icon={faPlus} className={getIconClass} />}
+        {icon && <Icon icon={icon} className={getIconClass} />}
         <span className={getLabelTextClass}>{label}</span>
       </span>
     </ElementType>
