@@ -11,6 +11,14 @@ const config: StorybookConfig = {
     "@storybook/addon-themes",
     "storybook-addon-pseudo-states",
     "@storybook/addon-a11y",
+    {
+      name: "@storybook/addon-styling-webpack",
+      options: {
+        sass: {
+          implementation: require("sass"),
+        },
+      },
+    },
   ],
   framework: {
     name: "@storybook/nextjs",
