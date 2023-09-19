@@ -2,6 +2,7 @@ import { Config, PluginCreator } from "tailwindcss/types/config";
 import { materialTheme } from "./material-theme";
 import { darkTheme } from "./dark-theme";
 import { materialStates } from "./material-states";
+import { materialFonts } from "./material-fonts";
 
 export const createMaterialTheme = (
   colorsMap: { primary: any; secondary: string; tertiary: string },
@@ -22,5 +23,8 @@ export const createMaterialTheme = (
     plugins.push(theme.plugin);
   }
 
-  return { colors: colors, plugins: plugins };
+  const fonts = materialFonts();
+  plugins.push(fonts.plugin);
+
+  return { colors: colors, fontFamily: fonts.fontFamily, plugins: plugins };
 };

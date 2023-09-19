@@ -36,6 +36,7 @@ const createTabStory = (variant: TabsVariant, args?: Partial<TabProps>) => {
   );
   tabStory.args = {
     label: "Tab",
+    variant: variant,
     ...args,
   };
   return tabStory;

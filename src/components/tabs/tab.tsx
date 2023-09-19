@@ -1,5 +1,5 @@
-import { FunctionComponent } from "react";
-import { ClassNameHelper } from "@/components/utils/ClassNameHelper";
+import React, { FunctionComponent, useEffect } from "react";
+import { StylesHandler } from "@/components/utils/ClassNameHelper";
 import { TabsVariant } from "@/components/tabs/tabs";
 import { Icon } from "@/components/icon/icon";
 import { IconDefinition } from "@fortawesome/pro-regular-svg-icons";
@@ -27,6 +27,15 @@ export const Tab: FunctionComponent<TabProps> = ({
 }) => {
   const ElementType = href ? "a" : "button";
 
+  const contentRef = React.useRef(null);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      const spanWidth = contentRef.current.offsetWidth;
+      // console.log(contentRef, spanWidth);
+    }
+  }, []);
+
   let linkProps: any = {};
   if (href) {
     linkProps.href = href;
@@ -45,56 +54,88 @@ export const Tab: FunctionComponent<TabProps> = ({
     buttonProps.onClick = handleClick;
   }
 
-  const getTabClass = ClassNameHelper.getFromVariant<TabsVariant>(
-    variant,
+  const getTabClass = StylesHandler.getStyles([
     "bg-surface",
     {
-      [TabsVariant.Primary]: [],
-      [TabsVariant.Secondary]: [],
-    }
-  );
-
-  const getStateLayerClass = ClassNameHelper.getFromVariant<TabsVariant>(
-    variant,
-    "px-4 flex flex-col gap-0.5 justify-end items-center",
+      applyWhen: Boolean(icon && label) && variant == TabsVariant.Primary,
+      styles: ["h-16"],
+    },
     {
-      [TabsVariant.Primary]: [
-        "",
+      applyWhen: !(Boolean(icon && label) && variant == TabsVariant.Primary),
+      styles: ["h-12"],
+    },
+  ]);
+
+  const getStateLayerClass = StylesHandler.getStyles([
+    "px-4 h-full flex  gap-0.5 justify-end",
+    {
+      "pb-3.5": Boolean(label && !icon),
+    },
+    {
+      applyWhen: variant == TabsVariant.Primary,
+      styles: [
+        "flex-col items-center",
         {
-          "pt-2.5 pb-2": Boolean(label && icon),
+          "pb-2": Boolean(label && icon),
+          "pb-3": Boolean(!label && icon),
           "state-on-surface": !selected,
           "state-primary": selected,
         },
       ],
-      [TabsVariant.Secondary]: [],
-    }
-  );
-  const getIconClass = ClassNameHelper.getFromVariant<TabsVariant>(
-    variant,
-    "h-5 w-5",
+    },
     {
-      [TabsVariant.Primary]: [
-        "",
+      applyWhen: variant == TabsVariant.Secondary,
+      styles: [
+        "state-on-surface",
         {
+          "flex-col items-center": Boolean(!(label && icon)),
+          "flex-row pb-3 items-end gap-2": Boolean(label && icon),
+        },
+      ],
+    },
+  ]);
+  const getIconClass = StylesHandler.getStyles([
+    "h-6 w-6 p-0.5 !box-border",
+    {
+      applyWhen: variant == TabsVariant.Primary,
+      styles: [
+        {
+          "text-on-surface-variant": !selected,
           "text-primary": selected,
         },
       ],
-      [TabsVariant.Secondary]: [],
-    }
-  );
-  const getLabelTextClass = ClassNameHelper.getFromVariant<TabsVariant>(
-    variant,
-    "",
+    },
     {
-      [TabsVariant.Primary]: [
-        "",
+      applyWhen: variant == TabsVariant.Secondary,
+      styles: [
         {
+          "text-on-surface-variant": !selected,
+          "text-on-surface": selected,
+        },
+      ],
+    },
+  ]);
+  const getLabelTextClass = StylesHandler.getStyles([
+    "title-small",
+    {
+      applyWhen: variant == TabsVariant.Primary,
+      styles: [
+        {
+          "text-on-surface-variant": !selected,
           "text-primary": selected,
         },
       ],
-      [TabsVariant.Secondary]: [],
-    }
-  );
+    },
+    {
+      applyWhen: variant == TabsVariant.Secondary,
+      styles: [
+        {
+          "text-on-surface-variant": !selected,
+          "text-on-surface": selected,
+        },
+      ],
+    },
+  ]);
   return (
     <ElementType
       href={href}
@@ -103,7 +144,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       {...buttonProps}
       {...linkProps}
     >
-      <span className={getStateLayerClass}>
+      <span ref={contentRef} className={getStateLayerClass}>
         {icon && <Icon icon={icon} className={getIconClass} />}
         <span className={getLabelTextClass}>{label}</span>
       </span>
