@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useEffect } from "react";
-import { StylesHandler } from "@/components/utils/ClassNameHelper";
+
 import { TabsVariant } from "@/components/tabs/tabs";
 import { Icon } from "@/components/icon/icon";
 import { IconDefinition } from "@fortawesome/pro-regular-svg-icons";
+import { StylingHelper } from "@/components/utils/StylingHelper";
 
 export interface TabProps {
   selected?: boolean;
@@ -32,7 +33,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   useEffect(() => {
     if (contentRef.current) {
       const spanWidth = contentRef.current.offsetWidth;
-      // console.log(contentRef, spanWidth);
+      console.log(contentRef, spanWidth);
     }
   }, []);
 
@@ -54,7 +55,7 @@ export const Tab: FunctionComponent<TabProps> = ({
     buttonProps.onClick = handleClick;
   }
 
-  const getTabClass = StylesHandler.getStyles([
+  const getTabClass = StylingHelper.classNames([
     "bg-surface",
     {
       applyWhen: Boolean(icon && label) && variant == TabsVariant.Primary,
@@ -66,7 +67,7 @@ export const Tab: FunctionComponent<TabProps> = ({
     },
   ]);
 
-  const getStateLayerClass = StylesHandler.getStyles([
+  const getStateLayerClass = StylingHelper.classNames([
     "px-4 h-full flex  gap-0.5 justify-end",
     {
       "pb-3.5": Boolean(label && !icon),
@@ -94,7 +95,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       ],
     },
   ]);
-  const getIconClass = StylesHandler.getStyles([
+  const getIconClass = StylingHelper.classNames([
     "h-6 w-6 p-0.5 !box-border",
     {
       applyWhen: variant == TabsVariant.Primary,
@@ -115,7 +116,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       ],
     },
   ]);
-  const getLabelTextClass = StylesHandler.getStyles([
+  const getLabelTextClass = StylingHelper.classNames([
     "title-small",
     {
       applyWhen: variant == TabsVariant.Primary,

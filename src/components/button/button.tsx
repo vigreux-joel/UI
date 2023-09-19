@@ -1,7 +1,7 @@
 import type { FunctionComponent } from "react";
 import { Icon } from "../icon/icon";
 import { IconDefinition } from "@fortawesome/pro-regular-svg-icons";
-import { ClassNameHelper } from "../utils/ClassNameHelper";
+import { StylingHelper } from "../utils/StylingHelper";
 
 export enum ButtonVariant {
   Filled = "filled",
@@ -53,24 +53,203 @@ export const Button: FunctionComponent<ButtonProps> = ({
     buttonProps.onClick = handleClick;
   }
 
-  const getButtonClass = ClassNameHelper.getFromVariant<ButtonVariant>(
-    variant,
-    "button group rounded-full"
-  );
+  const getButtonClass = StylingHelper.classNames([
+    "button group rounded-full",
+    {
+      applyWhen: variant == ButtonVariant.Elevated,
+      styles: [
+        {
+          "bg-surface-container-low": !disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Filled,
+      styles: [
+        {
+          "bg-primary": !disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.FilledTonal,
+      styles: [
+        {
+          "bg-secondary-container": !disabled,
+        },
+      ],
+    },
+  ]);
 
-  const getStateLayerClass = ClassNameHelper.getFromVariant<ButtonVariant>(
-    variant,
-    "state-layer flex gap-2 justify-center rounded-full  items-center px-6 py-2.5"
-  );
+  const g = StylingHelper.classNames([
+    "",
+    {
+      applyWhen: variant == ButtonVariant.Elevated,
+      styles: [],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Filled,
+      styles: [],
+    },
+    {
+      applyWhen: variant == ButtonVariant.FilledTonal,
+      styles: [],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Outlined,
+      styles: [],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Text,
+      styles: [],
+    },
+  ]);
 
-  const getIconClass = ClassNameHelper.getFromVariant<ButtonVariant>(
-    variant,
-    "icon h-[18px] w-[18px]"
-  );
-  const getLabelTextClass = ClassNameHelper.getFromVariant<ButtonVariant>(
-    variant,
-    "label-text"
-  );
+  const getStateLayerClass = StylingHelper.classNames([
+    "state-layer flex gap-2 justify-center rounded-full  items-center px-6 py-2.5",
+    {
+      applyWhen: variant == ButtonVariant.Elevated,
+      styles: [
+        {
+          "group-disabled:bg-on-surface/[0.12]": disabled,
+          "state-primary shadow-1  group-hover:shadow-2": !disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Filled,
+      styles: [
+        {
+          "group-disabled:bg-on-surface/[0.12]": disabled,
+          "state-on-primary group-hover:shadow-1": !disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.FilledTonal,
+      styles: [
+        {
+          "group-disabled:bg-on-surface/[0.12]": disabled,
+          "state-on-secondary-container group-hover:shadow-1": !disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Outlined,
+      styles: [
+        " border",
+        {
+          "group-disabled:border-on-surface/[0.12]": disabled,
+          "state-primary border-outline state-primary group-focus:border-primary":
+            !disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Text,
+      styles: [
+        {
+          "state-primary": !disabled,
+        },
+      ],
+    },
+  ]);
+  const getIconClass = StylingHelper.classNames([
+    "icon h-[18px] w-[18px]",
+    {
+      applyWhen: variant == ButtonVariant.Elevated,
+      styles: [
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[38%]": disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Filled,
+      styles: [
+        {
+          "text-on-primary": !disabled,
+          "group-disabled:text-on-surface/[38%]": disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.FilledTonal,
+      styles: [
+        {
+          "text-on-secondary-container": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Outlined,
+      styles: [
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Text,
+      styles: [
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+    },
+  ]);
+  const getLabelTextClass = StylingHelper.classNames([
+    "label-text",
+    {
+      applyWhen: variant == ButtonVariant.Elevated,
+      styles: [
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[38%]": disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Filled,
+      styles: [
+        {
+          "text-on-primary": !disabled,
+          "group-disabled:text-on-surface/[38%]": disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.FilledTonal,
+      styles: [
+        {
+          "text-on-secondary-container": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Outlined,
+      styles: [
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == ButtonVariant.Text,
+      styles: [
+        {
+          "text-primary": !disabled,
+          "group-disabled:text-on-surface/[0.38]": disabled,
+        },
+      ],
+    },
+  ]);
 
   return (
     <ElementType
