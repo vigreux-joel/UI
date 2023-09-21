@@ -6,17 +6,21 @@ import { IconDefinition } from "@fortawesome/pro-regular-svg-icons";
 import { StylingHelper } from "@/components/utils/StylingHelper";
 
 export interface TabProps {
+  className?: string;
   selected?: boolean;
-  label: string;
+  label?: string;
   variant?: TabsVariant;
   href?: string;
   title?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void | undefined;
   type?: "button" | "submit" | "reset" | undefined;
   icon?: IconDefinition;
+  setUnderlineWidth?: (width: number) => void;
 }
 
 export const Tab: FunctionComponent<TabProps> = ({
+  setUnderlineWidth,
+  className,
   onClick,
   selected,
   label,
@@ -32,10 +36,18 @@ export const Tab: FunctionComponent<TabProps> = ({
 
   useEffect(() => {
     if (contentRef.current) {
-      const spanWidth = contentRef.current.offsetWidth;
-      console.log(contentRef, spanWidth);
+      const element = contentRef.current;
+      const style = window.getComputedStyle(element);
+
+      const paddingLeft = parseFloat(style.paddingLeft);
+      const paddingRight = parseFloat(style.paddingRight);
+      const width = element.clientWidth - paddingLeft - paddingRight;
+
+      if (setUnderlineWidth && selected) {
+        setUnderlineWidth(width);
+      }
     }
-  }, []);
+  }, [selected, setUnderlineWidth]);
 
   let linkProps: any = {};
   if (href) {
@@ -56,6 +68,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   }
 
   const getTabClass = StylingHelper.classNames([
+    className,
     "bg-surface",
     {
       applyWhen: Boolean(icon && label) && variant == TabsVariant.Primary,
@@ -68,7 +81,23 @@ export const Tab: FunctionComponent<TabProps> = ({
   ]);
 
   const getStateLayerClass = StylingHelper.classNames([
-    "px-4 h-full flex  gap-0.5 justify-end",
+    "flex justify-center h-full",
+    {
+      applyWhen: variant == TabsVariant.Primary,
+      styles: [
+        {
+          "state-on-surface": !selected,
+          "state-primary": selected,
+        },
+      ],
+    },
+    {
+      applyWhen: variant == TabsVariant.Secondary,
+      styles: ["state-on-surface"],
+    },
+  ]);
+  const getContentClass = StylingHelper.classNames([
+    "content px-4 h-full flex  gap-0.5 justify-end",
     {
       "pb-3.5": Boolean(label && !icon),
     },
@@ -79,15 +108,12 @@ export const Tab: FunctionComponent<TabProps> = ({
         {
           "pb-2": Boolean(label && icon),
           "pb-3": Boolean(!label && icon),
-          "state-on-surface": !selected,
-          "state-primary": selected,
         },
       ],
     },
     {
       applyWhen: variant == TabsVariant.Secondary,
       styles: [
-        "state-on-surface",
         {
           "flex-col items-center": Boolean(!(label && icon)),
           "flex-row pb-3 items-end gap-2": Boolean(label && icon),
@@ -116,6 +142,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       ],
     },
   ]);
+
   const getLabelTextClass = StylingHelper.classNames([
     "title-small",
     {
@@ -145,9 +172,11 @@ export const Tab: FunctionComponent<TabProps> = ({
       {...buttonProps}
       {...linkProps}
     >
-      <span ref={contentRef} className={getStateLayerClass}>
-        {icon && <Icon icon={icon} className={getIconClass} />}
-        <span className={getLabelTextClass}>{label}</span>
+      <span className={getStateLayerClass}>
+        <span ref={contentRef} className={getContentClass}>
+          {icon && <Icon icon={icon} className={getIconClass} />}
+          <span className={getLabelTextClass}>{label}</span>
+        </span>
       </span>
     </ElementType>
   );

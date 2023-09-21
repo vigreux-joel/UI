@@ -1,6 +1,7 @@
 import classnames from "classnames";
 
 type StyleSet =
+  | undefined
   | string
   | Record<string, boolean | undefined>
   | { applyWhen: Boolean; styles: StyleSet | StyleSet[] };
@@ -17,6 +18,8 @@ export class StylingHelper {
   }
 
   private static compileStyles(styles: StyleSet): string[] {
+    if (!styles) return [];
+
     if (typeof styles === "string") {
       return [styles];
     }
