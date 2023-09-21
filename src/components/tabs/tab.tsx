@@ -184,9 +184,13 @@ export const Tab: FunctionComponent<TabProps> = ({
       className={getTabClass}
       {...buttonProps}
       {...linkProps}
+      ref={variant === TabsVariant.Secondary ? contentRef : null}
     >
       <span className={getStateLayerClass}>
-        <span ref={contentRef} className={getContentClass}>
+        <span
+          ref={variant === TabsVariant.Primary ? contentRef : null}
+          className={getContentClass}
+        >
           {icon && <Icon icon={icon} className={getIconClass} />}
           <span className={getLabelTextClass}>{label}</span>
         </span>
