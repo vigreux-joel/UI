@@ -65,10 +65,10 @@ export const PrimaryIconOnly = createTabStory(TabsVariant.Primary, {
 export const SecondaryLabelOnly = createTabStory(TabsVariant.Secondary);
 export const SecondaryIconAndLabel = createTabStory(TabsVariant.Secondary, {
   tabs: [
-    { icon: faMagnifyingGlass },
-    { icon: faHeart },
-    { icon: faPlane },
-    { icon: faMessage },
-    { icon: faCircleUser },
+    { label: "Explorer", icon: faMagnifyingGlass },
+    { label: "Favoris", icon: faHeart },
+    { label: "Voyages", icon: faPlane },
+    { label: "Messages", icon: faMessage },
+    { label: "profil", icon: faCircleUser },
   ],
 });

@@ -15,7 +15,7 @@ export interface TabProps {
   onClick?: (e: React.MouseEvent<HTMLElement>) => void | undefined;
   type?: "button" | "submit" | "reset" | undefined;
   icon?: IconDefinition;
-  setUnderlineWidth?: (width: number) => void;
+  setUnderlineWidth?: (measure: { width: number; left: number }) => void;
 }
 
 export const Tab: FunctionComponent<TabProps> = ({
@@ -42,9 +42,10 @@ export const Tab: FunctionComponent<TabProps> = ({
       const paddingLeft = parseFloat(style.paddingLeft);
       const paddingRight = parseFloat(style.paddingRight);
       const width = element.clientWidth - paddingLeft - paddingRight;
+      const left = element.offsetLeft;
 
       if (setUnderlineWidth && selected) {
-        setUnderlineWidth(width);
+        setUnderlineWidth({ width, left });
       }
     }
   }, [selected, setUnderlineWidth]);
@@ -81,7 +82,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   ]);
 
   const getStateLayerClass = StylingHelper.classNames([
-    "flex justify-center h-full",
+    "flex px-4 justify-center h-full",
     {
       applyWhen: variant == TabsVariant.Primary,
       styles: [
@@ -97,7 +98,7 @@ export const Tab: FunctionComponent<TabProps> = ({
     },
   ]);
   const getContentClass = StylingHelper.classNames([
-    "content px-4 h-full flex  gap-0.5 justify-end",
+    "content  h-full flex  gap-0.5 justify-end",
     {
       "pb-3.5": Boolean(label && !icon),
     },
@@ -164,6 +165,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       ],
     },
   ]);
+
   return (
     <ElementType
       href={href}

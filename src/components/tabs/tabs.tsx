@@ -19,7 +19,10 @@ export const Tabs: FunctionComponent<TabsProps> = ({
 }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [underlineWidth, setUnderlineWidth] = useState(0);
-
+  const [underlineOffset, setUnderlineOffset] = useState(0);
+  const handleChange = (index: number) => (event) => {
+    setSelectedTab(index);
+  };
   const getTabClass = StylingHelper.classNames([
     "flex-1",
     {
@@ -32,10 +35,9 @@ export const Tabs: FunctionComponent<TabsProps> = ({
     },
   ]);
 
-  const handleChange = (index: number) => (event) => {
-    setSelectedTab(index);
-  };
-
+  const getUnderlineClass = StylingHelper.classNames([
+    "bg-primary h-0.5 absolute  bottom-0 transition-all duration-300",
+  ]);
   return (
     <div className="">
       <div className="flex relative">
@@ -47,19 +49,17 @@ export const Tabs: FunctionComponent<TabsProps> = ({
               onClick={handleChange(index)}
               className={getTabClass}
               selected={isSelected}
-              setUnderlineWidth={(width) => {
-                console.log(width);
+              setUnderlineWidth={({ width, left }) => {
                 setUnderlineWidth(width);
+                setUnderlineOffset(left);
               }}
               {...tab}
             ></Tab>
           );
         })}
         <span
-          style={{ width: underlineWidth + "px" }}
-          className={
-            "bg-primary h-0.5 absolute  bottom-0 transition-all duration-300"
-          }
+          style={{ width: underlineWidth + "px", left: underlineOffset + "px" }}
+          className={getUnderlineClass}
         ></span>
       </div>
       <Diviser className="text-surface-container-highest " />
