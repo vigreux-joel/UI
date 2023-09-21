@@ -5,7 +5,7 @@ import { materialStates } from "./material-states";
 import { materialFonts } from "./material-fonts";
 
 export const createMaterialTheme = (
-  colorsMap: { primary: any; secondary: string; tertiary: string },
+  colorsMap: { primary: any; secondary?: string; tertiary?: string },
   darkMode: null | "class" | "media"
 ) => {
   let colors: Record<string, string> = materialTheme(colorsMap);
