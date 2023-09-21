@@ -35,19 +35,30 @@ export const Tab: FunctionComponent<TabProps> = ({
   const contentRef = React.useRef(null);
 
   useEffect(() => {
-    if (contentRef.current) {
-      const element = contentRef.current;
-      const style = window.getComputedStyle(element);
+    function handleResize() {
+      if (contentRef.current) {
+        const element = contentRef.current;
+        const style = window.getComputedStyle(element);
 
-      const paddingLeft = parseFloat(style.paddingLeft);
-      const paddingRight = parseFloat(style.paddingRight);
-      const width = element.clientWidth - paddingLeft - paddingRight;
-      const left = element.offsetLeft;
+        const paddingLeft = parseFloat(style.paddingLeft);
+        const paddingRight = parseFloat(style.paddingRight);
+        const width = element.clientWidth - paddingLeft - paddingRight;
+        const left = element.offsetLeft;
 
-      if (setUnderlineWidth && selected) {
-        setUnderlineWidth({ width, left });
+        if (setUnderlineWidth && selected) {
+          setUnderlineWidth({ width, left });
+        }
       }
     }
+
+    if (selected) {
+      window.addEventListener("resize", handleResize);
+      handleResize();
+    }
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [selected, setUnderlineWidth]);
 
   let linkProps: any = {};

@@ -23,6 +23,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
   const handleChange = (index: number) => (event) => {
     setSelectedTab(index);
   };
+
   const getTabClass = StylingHelper.classNames([
     "flex-1",
     {
