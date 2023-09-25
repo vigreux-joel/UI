@@ -81,30 +81,6 @@ export const Button: FunctionComponent<ButtonProps> = ({
     },
   ]);
 
-  const g = StylingHelper.classNames([
-    "",
-    {
-      applyWhen: variant == ButtonVariant.Elevated,
-      styles: [],
-    },
-    {
-      applyWhen: variant == ButtonVariant.Filled,
-      styles: [],
-    },
-    {
-      applyWhen: variant == ButtonVariant.FilledTonal,
-      styles: [],
-    },
-    {
-      applyWhen: variant == ButtonVariant.Outlined,
-      styles: [],
-    },
-    {
-      applyWhen: variant == ButtonVariant.Text,
-      styles: [],
-    },
-  ]);
-
   const getStateLayerClass = StylingHelper.classNames([
     "state-layer flex gap-2 justify-center rounded-full  items-center px-6 py-2.5",
     {
