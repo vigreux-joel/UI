@@ -138,6 +138,29 @@ export const IconButton: FunctionComponent<IconButtonProps> = (
         },
       ],
     },
+    {
+      applyWhen: variant == IconButtonVariant.OUTLINED,
+      styles: [
+        {
+          applyWhen: !disabled,
+          styles: [
+            {
+              "border border-outline": !isActive,
+              "border border-transparent bg-inverse-surface": isActive,
+            },
+          ],
+        },
+        {
+          applyWhen: Boolean(disabled),
+          styles: [
+            {
+              "border border-on-surface/[0.12]": !isActive,
+              "border border-transparent bg-on-surface/[0.12]": isActive,
+            },
+          ],
+        },
+      ],
+    },
   ]);
   const getStateClass = StylingHelper.classNames([
     "p-2 flex ",
@@ -163,7 +186,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = (
           styles: [
             {
               "state-primary": !isActive,
-              "state-on-primary": isActive,
+              "state-inverse-on-surface": isActive,
             },
           ],
         },
@@ -178,6 +201,20 @@ export const IconButton: FunctionComponent<IconButtonProps> = (
             {
               "state-on-surface-variant": !isActive,
               "state-on-secondary": isActive,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      applyWhen: variant == IconButtonVariant.OUTLINED,
+      styles: [
+        {
+          applyWhen: !disabled,
+          styles: [
+            {
+              "state-on-surface-variant": !isActive,
+              "state-on-primary": isActive,
             },
           ],
         },
@@ -220,6 +257,20 @@ export const IconButton: FunctionComponent<IconButtonProps> = (
             {
               "text-on-surface-variant": !isActive,
               "text-on-secondary-container": isActive,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      applyWhen: variant == IconButtonVariant.OUTLINED,
+      styles: [
+        {
+          applyWhen: !disabled,
+          styles: [
+            {
+              "text-on-surface-variant": !isActive,
+              "text-inverse-on-surface": isActive,
             },
           ],
         },
