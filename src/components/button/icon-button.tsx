@@ -11,79 +11,52 @@ export enum IconButtonVariant {
   OUTLINED = "outlined",
 }
 
-type BaseProps = {
+type BaseProps = {};
+
+export type IconButtonProps = {
   variant?: IconButtonVariant;
   disabled?: boolean;
   arialLabel: string;
   icon: IconDefinition;
-};
-
-interface ButtonProps extends BaseProps {
+  iconSelected?: IconDefinition;
+  activated?: boolean;
+  onToggle?: (isActive: boolean) => void;
+  href?: string;
+  title?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   type?: "button" | "submit" | "reset";
-  href: never;
-  title: never;
-}
+};
 
-interface LinkProps extends BaseProps {
-  href: string;
-  title: string;
-  onClick: never;
-  type: never;
-  iconUnselected: never;
-  iconSelected: never;
-  isActive: never;
-  onToggle: never;
-}
-
-interface ButtonToggleableProps extends Omit<BaseProps, "icon"> {
-  iconUnselected: IconDefinition;
-  iconSelected: IconDefinition;
-  isActive?: boolean;
-  onToggle: (isActive: boolean) => void;
-  type: never;
-  href: never;
-  title: never;
-}
-
-export type IconButtonProps = ButtonProps | LinkProps | ButtonToggleableProps;
-
-export const IconButton: FunctionComponent<IconButtonProps> = (
-  props,
-  context
-) => {
-  const [isActive, setIsActive] = React.useState(
-    "isActive" in props ? props.isActive : false
-  );
+export const IconButton: FunctionComponent<IconButtonProps> = ({
+  variant = IconButtonVariant.STANDARD,
+  href,
+  disabled,
+  type = "button",
+  title,
+  arialLabel,
+  onToggle,
+  activated,
+  onClick,
+  icon,
+  iconSelected,
+}) => {
+  const [isActive, setIsActive] = React.useState(activated);
   let handleClick:
     | ((event: React.MouseEvent<HTMLElement>) => void)
     | (() => void)
     | undefined;
-  let icon: IconDefinition;
 
-  if (!("onToggle" in props)) {
-    if ("onClick" in props) {
-      handleClick = props.onClick;
-    }
-    icon = props.icon;
-  } else {
+  if (!onToggle) {
+    handleClick = onClick;
+  } else if (onToggle) {
     handleClick = () => {
       setIsActive(!isActive);
-      if (typeof isActive === "boolean" && isActive) {
-        props.onToggle?.(isActive);
+      if (isActive) {
+        onToggle(isActive);
       }
     };
-    icon = isActive ? props.iconSelected : props.iconUnselected;
+    icon = isActive ? (iconSelected ? iconSelected : icon) : icon;
   }
-
-  const {
-    variant = IconButtonVariant.STANDARD,
-    href,
-    disabled,
-    type = "button",
-    title,
-    arialLabel,
-  } = props;
 
   // Détermine le type de l'élément à rendre : un bouton ou un lien
   const ElementType = href ? "a" : "button";
@@ -109,8 +82,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = (
           applyWhen: !disabled,
           styles: [
             {
-              "bg-surface-container": !isActive,
-              "bg-primary": isActive,
+              "bg-surface-container": !isActive && Boolean(onToggle),
+              "bg-primary": isActive || !onToggle,
             },
           ],
         },
@@ -127,8 +100,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = (
           applyWhen: !disabled,
           styles: [
             {
-              "bg-surface-container": !isActive,
-              "bg-secondary-container": isActive,
+              "bg-surface-container": !isActive && Boolean(onToggle),
+              "bg-secondary-container": isActive || !onToggle,
             },
           ],
         },
@@ -185,8 +158,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = (
           applyWhen: !disabled,
           styles: [
             {
-              "state-primary": !isActive,
-              "state-inverse-on-surface": isActive,
+              "state-primary": !isActive && Boolean(onToggle),
+              "state-inverse-on-surface": isActive || !onToggle,
             },
           ],
         },
@@ -199,8 +172,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = (
           applyWhen: !disabled,
           styles: [
             {
-              "state-on-surface-variant": !isActive,
-              "state-on-secondary": isActive,
+              "state-on-surface-variant": !isActive && Boolean(onToggle),
+              "state-on-secondary-container": isActive || !onToggle,
             },
           ],
         },
@@ -241,8 +214,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = (
           applyWhen: !disabled,
           styles: [
             {
-              "text-primary": !isActive,
-              "text-on-primary": isActive,
+              "text-primary": !isActive && Boolean(onToggle),
+              "text-on-primary": isActive || !onToggle,
             },
           ],
         },
@@ -255,8 +228,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = (
           applyWhen: !disabled,
           styles: [
             {
-              "text-on-surface-variant": !isActive,
-              "text-on-secondary-container": isActive,
+              "text-on-surface-variant": !isActive && Boolean(onToggle),
+              "text-on-secondary-container": isActive || !onToggle,
             },
           ],
         },

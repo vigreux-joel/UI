@@ -27,73 +27,72 @@ type Story = StoryObj<typeof meta>;
 
 const createIconButtonStory = (
   variant: IconButtonVariant,
-  toggle?: boolean,
-  args?: Partial<IconButtonProps>
+  toggle?: boolean
 ) => {
-  const IconButtonStory: Story = (
-    args: { arialLabel: string } & Partial<IconButtonProps>
-  ) => (
+  const IconButtonStory: Story = (args: IconButtonProps) => (
     <div className="">
-      {!("onToggle" in args) && (
+      {!toggle && (
         <>
           <div className="flex m-4 gap-4 items-center">
-            <IconButton icon={faGear} {...args} />
-            <IconButton icon={faGear} {...args} disabled />
+            <IconButton {...args} onToggle={undefined} />
+            <IconButton {...args} disabled onToggle={undefined} />
           </div>
         </>
       )}
-      {"onToggle" in args && (
+      {toggle && (
         <>
           <div className="flex m-4 gap-4 items-center">
-            <IconButton
-              {...args}
-              onToggle={(isActive) => {}}
-              iconSelected={fasGear}
-              iconUnselected={farGear}
-            />
-            <IconButton
-              {...args}
-              disabled
-              onToggle={(isActive) => {}}
-              iconSelected={fasGear}
-              iconUnselected={farGear}
-            />
+            <IconButton {...args} />
+            <IconButton {...args} disabled />
           </div>
           <div className="flex m-4 gap-4 items-center">
-            <IconButton
-              {...args}
-              isActive
-              onToggle={(isActive) => {}}
-              iconSelected={fasGear}
-              iconUnselected={farGear}
-            />
-            <IconButton
-              {...args}
-              disabled
-              isActive
-              onToggle={(isActive) => {}}
-              iconSelected={fasGear}
-              iconUnselected={farGear}
-            />
+            <IconButton {...args} activated />
+            <IconButton {...args} disabled activated />
           </div>
         </>
       )}
     </div>
   );
-  IconButtonStory.args = {
-    variant: variant,
-    arialLabel: "Action description",
-    ...args,
-  };
+
+  if (toggle) {
+    IconButtonStory.args = {
+      variant: variant,
+      arialLabel: "Action description",
+      onToggle: (isActive: boolean) => {},
+      icon: farGear,
+      iconSelected: fasGear,
+    };
+  } else {
+    IconButtonStory.args = {
+      variant: variant,
+      arialLabel: "Action description",
+      icon: farGear,
+    };
+  }
+
   return IconButtonStory;
 };
-export const StandardToggleable = createIconButtonStory(
-  IconButtonVariant.STANDARD
-);
-export const FilledToggleable = createIconButtonStory(IconButtonVariant.FILLED);
+export const Standard = createIconButtonStory(IconButtonVariant.STANDARD);
+export const Filled = createIconButtonStory(IconButtonVariant.FILLED);
 
-export const TonalToggleable = createIconButtonStory(IconButtonVariant.TONAl);
+export const Tonal = createIconButtonStory(IconButtonVariant.TONAl);
+
+export const Outlined = createIconButtonStory(IconButtonVariant.OUTLINED);
+export const StandardToggleable = createIconButtonStory(
+  IconButtonVariant.STANDARD,
+  true
+);
+export const FilledToggleable = createIconButtonStory(
+  IconButtonVariant.FILLED,
+  true
+);
+
+export const TonalToggleable = createIconButtonStory(
+  IconButtonVariant.TONAl,
+  true
+);
 
 export const OutlinedToggleable = createIconButtonStory(
-  IconButtonVariant.OUTLINED
+  IconButtonVariant.OUTLINED,
+  true
 );
