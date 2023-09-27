@@ -19,7 +19,23 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
-const createTabStory = (args?: Partial<CodePreviewProps>) => {
+const code = `import React from 'react';
+
+interface AppProps {
+  title: string;
+}
+
+const App: React.FC<AppProps> = ({title = "Example"}) => {
+  return (
+    <div>
+      <h1>{title}</h1>
+    </div>
+  );
+}
+
+export default App;`;
+
+const createTabStory = (args?: Partial<CodePreviewProps>, render?: boolean) => {
   const tabStory: Story = (args: CodePreviewProps) => (
     <div className="">
       <div className="flex">
@@ -29,9 +45,11 @@ const createTabStory = (args?: Partial<CodePreviewProps>) => {
   );
   tabStory.args = {
     ...args,
+    code: code,
+    renderPreview: render,
   };
   return tabStory;
 };
 
-export const Horizontal = createTabStory();
-export const Vertical = createTabStory();
+export const Standard = createTabStory();
+export const Preview = createTabStory({}, true);

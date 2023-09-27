@@ -11,17 +11,22 @@ export enum TabsVariant {
 export interface TabsProps {
   variant?: TabsVariant;
   tabs: Omit<TabProps, "selected">[];
+  onTabSelected?: (index: number) => void;
 }
 
 export const Tabs: FunctionComponent<TabsProps> = ({
   tabs,
   variant = TabsVariant.Primary,
+  onTabSelected,
 }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [underlineWidth, setUnderlineWidth] = useState(0);
   const [underlineOffset, setUnderlineOffset] = useState(0);
   const handleChange = (index: number) => (event) => {
     setSelectedTab(index);
+    if (onTabSelected) {
+      onTabSelected(index); // Call the callback
+    }
   };
 
   const getTabClass = StylingHelper.classNames([

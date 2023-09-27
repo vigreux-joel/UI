@@ -1,5 +1,5 @@
 import type { FunctionComponent } from "react";
-import React from "react";
+import React, { useEffect } from "react";
 import { Icon } from "../icon/icon";
 import { IconDefinition } from "@fortawesome/pro-regular-svg-icons";
 import { StylingHelper } from "../utils/StylingHelper";
@@ -25,6 +25,7 @@ export type IconButtonProps = {
   title?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   type?: "button" | "submit" | "reset";
+  className?: string;
 };
 
 export const IconButton: FunctionComponent<IconButtonProps> = ({
@@ -39,6 +40,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
   onClick,
   icon,
   iconSelected,
+  className,
 }) => {
   const [isActive, setIsActive] = React.useState(activated);
   let handleClick:
@@ -51,12 +53,13 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
   } else if (onToggle) {
     handleClick = () => {
       setIsActive(!isActive);
-      if (isActive) {
-        onToggle(isActive);
-      }
+      onToggle(Boolean(isActive));
     };
     icon = isActive ? (iconSelected ? iconSelected : icon) : icon;
   }
+  useEffect(() => {
+    setIsActive(activated);
+  }, [activated]);
 
   // Détermine le type de l'élément à rendre : un bouton ou un lien
   const ElementType = href ? "a" : "button";
@@ -75,6 +78,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
 
   const getButtonClass = StylingHelper.classNames([
     "rounded-full overflow-hidden transition-all duration-300",
+    className,
     {
       applyWhen: variant == IconButtonVariant.FILLED,
       styles: [
