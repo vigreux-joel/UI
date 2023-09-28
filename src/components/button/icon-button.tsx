@@ -140,7 +140,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
     },
   ]);
   const getStateClass = StylingHelper.classNames([
-    "p-2 flex ",
+    "p-2 flex rounded-full",
     {
       applyWhen: variant == IconButtonVariant.STANDARD,
       styles: [
@@ -199,7 +199,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
     },
   ]);
   const getIconClass = StylingHelper.classNames([
-    "h-5 transition-all duration-300",
+    "h-5 w-5 transition-all duration-300",
     {
       applyWhen: variant == IconButtonVariant.STANDARD,
       styles: [

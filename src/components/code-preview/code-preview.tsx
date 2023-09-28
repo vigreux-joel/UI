@@ -9,6 +9,7 @@ import {
 import { Highlight, themes } from "prism-react-renderer";
 import classNames from "classnames";
 import { LivePreview, LiveProvider } from "react-live";
+import { Diviser } from "@/components/diviser/diviser";
 
 export interface CodePreviewProps {
   className?: string;
@@ -55,7 +56,11 @@ export const CodePreview: FunctionComponent<CodePreviewProps> = ({
         { dark: !renderPreview || selectedTab == 1 }
       )}
     >
-      <div className="flex justify-between relative">
+      <div
+        className={classNames("flex justify-between  relative", {
+          "items-center": renderPreview,
+        })}
+      >
         {renderPreview && (
           <Tabs
             onTabSelected={setSelectedTab}
@@ -65,14 +70,15 @@ export const CodePreview: FunctionComponent<CodePreviewProps> = ({
         )}
         <IconButton
           activated={isCodeCopied}
-          className={classNames({
-            "absolute right-0": !renderPreview,
+          className={classNames("mr-2", {
+            "absolute right-0 top-2": !renderPreview,
           })}
           arialLabel="Copy code to clipboard"
           onToggle={copyCodeToClipboard}
           icon={faClipboard}
           iconSelected={faClipboardCheck}
         ></IconButton>
+        <Diviser className="text-surface-container-highest absolute bottom-0" />
       </div>
 
       <div className="px-4 py-3 !bg-surface">
