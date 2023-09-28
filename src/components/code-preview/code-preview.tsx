@@ -8,17 +8,20 @@ import {
 } from "@fortawesome/pro-regular-svg-icons";
 import { Highlight, themes } from "prism-react-renderer";
 import classNames from "classnames";
+import { LivePreview, LiveProvider } from "react-live";
 
 export interface CodePreviewProps {
   className?: string;
   code: string;
   renderPreview?: boolean;
+  scope?: Record<string, unknown> | undefined;
 }
 
 export const CodePreview: FunctionComponent<CodePreviewProps> = ({
   className,
   code,
   renderPreview,
+  scope,
 }) => {
   const [isCodeCopied, setIsCodeCopied] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0); // Add this state
@@ -26,7 +29,6 @@ export const CodePreview: FunctionComponent<CodePreviewProps> = ({
     try {
       await navigator.clipboard.writeText(code);
       setIsCodeCopied(true);
-      console.log("devrait être copié");
     } catch (err) {
       console.error("Failed to copy code: ", err);
     }
@@ -49,7 +51,7 @@ export const CodePreview: FunctionComponent<CodePreviewProps> = ({
   return (
     <div
       className={classNames(
-        "border-outline-variant border bg-surface rounded-xl overflow-hidden",
+        "border-outline-variant w-full border bg-surface rounded-xl overflow-hidden",
         { dark: !renderPreview || selectedTab == 1 }
       )}
     >
@@ -73,23 +75,29 @@ export const CodePreview: FunctionComponent<CodePreviewProps> = ({
         ></IconButton>
       </div>
 
-      <div>
-        <Highlight theme={themes.vsDark} code={code} language="tsx">
-          {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <pre
-              className="px-4 !bg-surface-container py-3 overflow-auto"
-              style={style}
-            >
-              {tokens.map((line, i) => (
-                <div key={i} {...getLineProps({ line })}>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token })} />
-                  ))}
-                </div>
-              ))}
-            </pre>
-          )}
-        </Highlight>
+      <div className="px-4 py-3 !bg-surface">
+        {selectedTab === 0 && renderPreview && (
+          <div>
+            <LiveProvider scope={{ ...scope, React, useState }} code={code}>
+              <LivePreview />
+            </LiveProvider>
+          </div>
+        )}
+        {(selectedTab === 1 || !renderPreview) && (
+          <Highlight theme={themes.vsDark} code={code.trim()} language="tsx">
+            {({ className, style, tokens, getLineProps, getTokenProps }) => (
+              <pre className="!bg-surface  overflow-auto" style={style}>
+                {tokens.map((line, i) => (
+                  <div key={i} {...getLineProps({ line })}>
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token })} />
+                    ))}
+                  </div>
+                ))}
+              </pre>
+            )}
+          </Highlight>
+        )}
       </div>
     </div>
   );

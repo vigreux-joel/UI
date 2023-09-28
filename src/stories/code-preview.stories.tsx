@@ -1,5 +1,7 @@
 import type {Meta, StoryObj} from "@storybook/react";
 import {CodePreview, CodePreviewProps,} from "../components/code-preview/code-preview";
+import React from "react";
+import {Button} from "@/components/button/button";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -19,21 +21,17 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
-const code = `import React from 'react';
-
-interface AppProps {
-  title: string;
-}
-
-const App: React.FC<AppProps> = ({title = "Example"}) => {
-  return (
-    <div>
-      <h1>{title}</h1>
-    </div>
-  );
-}
-
-export default App;`;
+const code = `
+  function Example() {
+    const [count, setCount] = useState(0);
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <Button label="Click me" onClick={() => setCount(count + 1)}/>
+      </div>
+    );
+  }
+`;
 
 const createTabStory = (args?: Partial<CodePreviewProps>, render?: boolean) => {
   const tabStory: Story = (args: CodePreviewProps) => (
@@ -47,6 +45,7 @@ const createTabStory = (args?: Partial<CodePreviewProps>, render?: boolean) => {
     ...args,
     code: code,
     renderPreview: render,
+    scope: { Button },
   };
   return tabStory;
 };
