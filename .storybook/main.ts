@@ -1,38 +1,41 @@
-import type { StorybookConfig } from "@storybook/nextjs";
-import path from "path";
+import type { StorybookConfig } from '@storybook/nextjs';
+import path from 'path';
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: [
+    '../stories/**/*.mdx',
+    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-onboarding",
-    "@storybook/addon-interactions",
-    "@storybook/addon-themes",
-    "storybook-addon-pseudo-states",
-    "@storybook/addon-a11y",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-onboarding',
+    '@storybook/addon-interactions',
+    '@storybook/addon-themes',
+    'storybook-addon-pseudo-states',
+    '@storybook/addon-a11y',
     {
-      name: "@storybook/addon-styling-webpack",
+      name: '@storybook/addon-styling-webpack',
       options: {
         sass: {
-          implementation: require("sass"),
+          implementation: require('sass'),
         },
       },
     },
   ],
   framework: {
-    name: "@storybook/nextjs",
+    name: '@storybook/nextjs',
     options: {},
   },
   docs: {
-    autodocs: "tag",
+    autodocs: 'tag',
   },
   webpackFinal: async (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@": path.resolve(__dirname, "../src/"),
+      '@': path.resolve(__dirname, '../src/'),
     };
-    config.resolve.extensions.push(".ts", ".tsx");
+    config.resolve.extensions.push('.ts', '.tsx');
     return config;
   },
 };
