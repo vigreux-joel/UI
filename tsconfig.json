@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "moduleResolution": "bundler",
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "esModuleInterop": true,
   },
   "extends": "@tsconfig/vite-react/tsconfig.json",
   "include": ["src", "types"]

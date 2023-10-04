@@ -1,18 +1,23 @@
-import type {Meta, StoryObj} from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {Tabs, TabsProps, TabsVariant} from "@/components/tabs/tabs";
-
-import {faCircleUser, faHeart, faMagnifyingGlass, faMessage, faPlane,} from "@fortawesome/pro-regular-svg-icons";
+import {
+  faCircleUser,
+  faHeart,
+  faMagnifyingGlass,
+  faMessage,
+  faPlane,
+} from '@fortawesome/pro-regular-svg-icons';
+import { Tabs, TabsProps, TabsVariant } from '../src';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "Navigation/Tabs",
+  title: 'Navigation/Tabs',
   component: Tabs,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
 } satisfies Meta<typeof Tabs>;
@@ -31,11 +36,11 @@ const createTabStory = (variant?: TabsVariant, args?: Partial<TabsProps>) => {
   tabStory.args = {
     variant: variant,
     tabs: [
-      { label: "Explorer" },
-      { label: "Favoris" },
-      { label: "Voyages" },
-      { label: "Messages" },
-      { label: "profil" },
+      { label: 'Explorer' },
+      { label: 'Favoris' },
+      { label: 'Voyages' },
+      { label: 'Messages' },
+      { label: 'profil' },
     ],
     ...args,
   };
@@ -45,11 +50,11 @@ const createTabStory = (variant?: TabsVariant, args?: Partial<TabsProps>) => {
 export const PrimaryLabelOnly = createTabStory(TabsVariant.Primary);
 export const PrimaryIconAndLabel = createTabStory(TabsVariant.Primary, {
   tabs: [
-    { label: "Explorer", icon: faMagnifyingGlass },
-    { label: "Favoris", icon: faHeart },
-    { label: "Voyages", icon: faPlane },
-    { label: "Messages", icon: faMessage },
-    { label: "profil", icon: faCircleUser },
+    { label: 'Explorer', icon: faMagnifyingGlass },
+    { label: 'Favoris', icon: faHeart },
+    { label: 'Voyages', icon: faPlane },
+    { label: 'Messages', icon: faMessage },
+    { label: 'profil', icon: faCircleUser },
   ],
 });
 export const PrimaryIconOnly = createTabStory(TabsVariant.Primary, {
@@ -65,10 +70,10 @@ export const PrimaryIconOnly = createTabStory(TabsVariant.Primary, {
 export const SecondaryLabelOnly = createTabStory(TabsVariant.Secondary);
 export const SecondaryIconAndLabel = createTabStory(TabsVariant.Secondary, {
   tabs: [
-    { label: "Explorer", icon: faMagnifyingGlass },
-    { label: "Favoris", icon: faHeart },
-    { label: "Voyages", icon: faPlane },
-    { label: "Messages", icon: faMessage },
-    { label: "profil", icon: faCircleUser },
+    { label: 'Explorer', icon: faMagnifyingGlass },
+    { label: 'Favoris', icon: faHeart },
+    { label: 'Voyages', icon: faPlane },
+    { label: 'Messages', icon: faMessage },
+    { label: 'profil', icon: faCircleUser },
   ],
 });

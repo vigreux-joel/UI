@@ -1,14 +1,14 @@
-import type { FunctionComponent } from "react";
-import { Icon } from "../icon/icon";
-import { IconDefinition } from "@fortawesome/pro-regular-svg-icons";
-import { StylingHelper } from "../utils/StylingHelper";
+import type { FunctionComponent } from 'react';
+import { Icon } from '../icon';
+import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+import { StylingHelper } from '../utils';
 
 export enum ButtonVariant {
-  Filled = "filled",
-  Elevated = "elevated",
-  Outlined = "outlined",
-  Text = "text",
-  FilledTonal = "tonal",
+  Filled = 'filled',
+  Elevated = 'elevated',
+  Outlined = 'outlined',
+  Text = 'text',
+  FilledTonal = 'tonal',
 }
 
 export interface ButtonProps {
@@ -19,7 +19,7 @@ export interface ButtonProps {
   icon?: IconDefinition;
   variant?: ButtonVariant;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void | undefined;
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: 'button' | 'submit' | 'reset' | undefined;
 }
 
 export const Button: FunctionComponent<ButtonProps> = ({
@@ -33,7 +33,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   type,
 }) => {
   // Détermine le type de l'élément à rendre : un bouton ou un lien
-  const ElementType = href ? "a" : "button";
+  const ElementType = href ? 'a' : 'button';
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     if (onClick) {
@@ -54,12 +54,12 @@ export const Button: FunctionComponent<ButtonProps> = ({
   }
 
   const getButtonClass = StylingHelper.classNames([
-    "button group rounded-full",
+    'button group rounded-full',
     {
       applyWhen: variant == ButtonVariant.Elevated,
       styles: [
         {
-          "bg-surface-container-low": !disabled,
+          'bg-surface-container-low': !disabled,
         },
       ],
     },
@@ -67,7 +67,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.Filled,
       styles: [
         {
-          "bg-primary": !disabled,
+          'bg-primary': !disabled,
         },
       ],
     },
@@ -75,20 +75,20 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.FilledTonal,
       styles: [
         {
-          "bg-secondary-container": !disabled,
+          'bg-secondary-container': !disabled,
         },
       ],
     },
   ]);
 
   const getStateLayerClass = StylingHelper.classNames([
-    "state-layer flex gap-2 justify-center rounded-full  items-center px-6 py-2.5",
+    'state-layer flex gap-2 justify-center rounded-full  items-center px-6 py-2.5',
     {
       applyWhen: variant == ButtonVariant.Elevated,
       styles: [
         {
-          "group-disabled:bg-on-surface/[0.12]": disabled,
-          "state-primary shadow-1  group-hover:shadow-2": !disabled,
+          'group-disabled:bg-on-surface/[0.12]': disabled,
+          'state-primary shadow-1  group-hover:shadow-2': !disabled,
         },
       ],
     },
@@ -96,8 +96,8 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.Filled,
       styles: [
         {
-          "group-disabled:bg-on-surface/[0.12]": disabled,
-          "state-on-primary group-hover:shadow-1": !disabled,
+          'group-disabled:bg-on-surface/[0.12]': disabled,
+          'state-on-primary group-hover:shadow-1': !disabled,
         },
       ],
     },
@@ -105,18 +105,18 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.FilledTonal,
       styles: [
         {
-          "group-disabled:bg-on-surface/[0.12]": disabled,
-          "state-on-secondary-container group-hover:shadow-1": !disabled,
+          'group-disabled:bg-on-surface/[0.12]': disabled,
+          'state-on-secondary-container group-hover:shadow-1': !disabled,
         },
       ],
     },
     {
       applyWhen: variant == ButtonVariant.Outlined,
       styles: [
-        " border",
+        ' border',
         {
-          "group-disabled:border-on-surface/[0.12]": disabled,
-          "state-primary border-outline state-primary group-focus:border-primary":
+          'group-disabled:border-on-surface/[0.12]': disabled,
+          'state-primary border-outline state-primary group-focus:border-primary':
             !disabled,
         },
       ],
@@ -125,19 +125,19 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.Text,
       styles: [
         {
-          "state-primary": !disabled,
+          'state-primary': !disabled,
         },
       ],
     },
   ]);
   const getIconClass = StylingHelper.classNames([
-    "icon h-[18px] w-[18px]",
+    'icon h-[18px] w-[18px]',
     {
       applyWhen: variant == ButtonVariant.Elevated,
       styles: [
         {
-          "text-primary": !disabled,
-          "group-disabled:text-on-surface/[38%]": disabled,
+          'text-primary': !disabled,
+          'group-disabled:text-on-surface/[38%]': disabled,
         },
       ],
     },
@@ -145,8 +145,8 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.Filled,
       styles: [
         {
-          "text-on-primary": !disabled,
-          "group-disabled:text-on-surface/[38%]": disabled,
+          'text-on-primary': !disabled,
+          'group-disabled:text-on-surface/[38%]': disabled,
         },
       ],
     },
@@ -154,8 +154,8 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.FilledTonal,
       styles: [
         {
-          "text-on-secondary-container": !disabled,
-          "group-disabled:text-on-surface/[0.38]": disabled,
+          'text-on-secondary-container': !disabled,
+          'group-disabled:text-on-surface/[0.38]': disabled,
         },
       ],
     },
@@ -163,8 +163,8 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.Outlined,
       styles: [
         {
-          "text-primary": !disabled,
-          "group-disabled:text-on-surface/[0.38]": disabled,
+          'text-primary': !disabled,
+          'group-disabled:text-on-surface/[0.38]': disabled,
         },
       ],
     },
@@ -172,20 +172,20 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.Text,
       styles: [
         {
-          "text-primary": !disabled,
-          "group-disabled:text-on-surface/[0.38]": disabled,
+          'text-primary': !disabled,
+          'group-disabled:text-on-surface/[0.38]': disabled,
         },
       ],
     },
   ]);
   const getLabelTextClass = StylingHelper.classNames([
-    "label-text",
+    'label-text',
     {
       applyWhen: variant == ButtonVariant.Elevated,
       styles: [
         {
-          "text-primary": !disabled,
-          "group-disabled:text-on-surface/[38%]": disabled,
+          'text-primary': !disabled,
+          'group-disabled:text-on-surface/[38%]': disabled,
         },
       ],
     },
@@ -193,8 +193,8 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.Filled,
       styles: [
         {
-          "text-on-primary": !disabled,
-          "group-disabled:text-on-surface/[38%]": disabled,
+          'text-on-primary': !disabled,
+          'group-disabled:text-on-surface/[38%]': disabled,
         },
       ],
     },
@@ -202,8 +202,8 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.FilledTonal,
       styles: [
         {
-          "text-on-secondary-container": !disabled,
-          "group-disabled:text-on-surface/[0.38]": disabled,
+          'text-on-secondary-container': !disabled,
+          'group-disabled:text-on-surface/[0.38]': disabled,
         },
       ],
     },
@@ -211,8 +211,8 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.Outlined,
       styles: [
         {
-          "text-primary": !disabled,
-          "group-disabled:text-on-surface/[0.38]": disabled,
+          'text-primary': !disabled,
+          'group-disabled:text-on-surface/[0.38]': disabled,
         },
       ],
     },
@@ -220,8 +220,8 @@ export const Button: FunctionComponent<ButtonProps> = ({
       applyWhen: variant == ButtonVariant.Text,
       styles: [
         {
-          "text-primary": !disabled,
-          "group-disabled:text-on-surface/[0.38]": disabled,
+          'text-primary': !disabled,
+          'group-disabled:text-on-surface/[0.38]': disabled,
         },
       ],
     },

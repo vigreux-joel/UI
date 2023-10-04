@@ -1,9 +1,9 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent, useEffect } from 'react';
 
-import { TabsVariant } from "@/components/tabs/tabs";
-import { Icon } from "@/components/icon/icon";
-import { IconDefinition } from "@fortawesome/pro-regular-svg-icons";
-import { StylingHelper } from "@/components/utils/StylingHelper";
+import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+import { TabsVariant } from './tabs';
+import { StylingHelper } from '../utils';
+import { Icon } from '../icon';
 
 export interface TabProps {
   className?: string;
@@ -13,7 +13,7 @@ export interface TabProps {
   href?: string;
   title?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void | undefined;
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: 'button' | 'submit' | 'reset' | undefined;
   icon?: IconDefinition;
   setUnderlineWidth?: (measure: { width: number; left: number }) => void;
 }
@@ -30,9 +30,9 @@ export const Tab: FunctionComponent<TabProps> = ({
   type,
   icon,
 }) => {
-  const ElementType = href ? "a" : "button";
+  const ElementType = href ? 'a' : 'button';
 
-  const contentRef = React.useRef(null);
+  const contentRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleResize() {
@@ -52,12 +52,12 @@ export const Tab: FunctionComponent<TabProps> = ({
     }
 
     if (selected) {
-      window.addEventListener("resize", handleResize);
+      window.addEventListener('resize', handleResize);
       handleResize();
     }
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [selected, setUnderlineWidth]);
 
@@ -81,45 +81,45 @@ export const Tab: FunctionComponent<TabProps> = ({
 
   const getTabClass = StylingHelper.classNames([
     className,
-    "bg-surface",
+    'bg-surface',
     {
       applyWhen: Boolean(icon && label) && variant == TabsVariant.Primary,
-      styles: ["h-16"],
+      styles: ['h-16'],
     },
     {
       applyWhen: !(Boolean(icon && label) && variant == TabsVariant.Primary),
-      styles: ["h-12"],
+      styles: ['h-12'],
     },
   ]);
 
   const getStateLayerClass = StylingHelper.classNames([
-    "flex px-4 justify-center h-full",
+    'flex px-4 justify-center h-full',
     {
       applyWhen: variant == TabsVariant.Primary,
       styles: [
         {
-          "state-on-surface": !selected,
-          "state-primary": selected,
+          'state-on-surface': !selected,
+          'state-primary': selected,
         },
       ],
     },
     {
       applyWhen: variant == TabsVariant.Secondary,
-      styles: ["state-on-surface"],
+      styles: ['state-on-surface'],
     },
   ]);
   const getContentClass = StylingHelper.classNames([
-    "content  h-full flex  gap-0.5 justify-end",
+    'content  h-full flex  gap-0.5 justify-end',
     {
-      "pb-3.5": Boolean(label && !icon),
+      'pb-3.5': Boolean(label && !icon),
     },
     {
       applyWhen: variant == TabsVariant.Primary,
       styles: [
-        "flex-col items-center",
+        'flex-col items-center',
         {
-          "pb-2": Boolean(label && icon),
-          "pb-3": Boolean(!label && icon),
+          'pb-2': Boolean(label && icon),
+          'pb-3': Boolean(!label && icon),
         },
       ],
     },
@@ -127,20 +127,20 @@ export const Tab: FunctionComponent<TabProps> = ({
       applyWhen: variant == TabsVariant.Secondary,
       styles: [
         {
-          "flex-col items-center": Boolean(!(label && icon)),
-          "flex-row pb-3 items-end gap-2": Boolean(label && icon),
+          'flex-col items-center': Boolean(!(label && icon)),
+          'flex-row pb-3 items-end gap-2': Boolean(label && icon),
         },
       ],
     },
   ]);
   const getIconClass = StylingHelper.classNames([
-    "h-6 w-6 p-0.5 !box-border",
+    'h-6 w-6 p-0.5 !box-border',
     {
       applyWhen: variant == TabsVariant.Primary,
       styles: [
         {
-          "text-on-surface-variant": !selected,
-          "text-primary": selected,
+          'text-on-surface-variant': !selected,
+          'text-primary': selected,
         },
       ],
     },
@@ -148,21 +148,21 @@ export const Tab: FunctionComponent<TabProps> = ({
       applyWhen: variant == TabsVariant.Secondary,
       styles: [
         {
-          "text-on-surface-variant": !selected,
-          "text-on-surface": selected,
+          'text-on-surface-variant': !selected,
+          'text-on-surface': selected,
         },
       ],
     },
   ]);
 
   const getLabelTextClass = StylingHelper.classNames([
-    "title-small",
+    'title-small',
     {
       applyWhen: variant == TabsVariant.Primary,
       styles: [
         {
-          "text-on-surface-variant": !selected,
-          "text-primary": selected,
+          'text-on-surface-variant': !selected,
+          'text-primary': selected,
         },
       ],
     },
@@ -170,8 +170,8 @@ export const Tab: FunctionComponent<TabProps> = ({
       applyWhen: variant == TabsVariant.Secondary,
       styles: [
         {
-          "text-on-surface-variant": !selected,
-          "text-on-surface": selected,
+          'text-on-surface-variant': !selected,
+          'text-on-surface': selected,
         },
       ],
     },

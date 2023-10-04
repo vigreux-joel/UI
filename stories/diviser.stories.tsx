@@ -1,15 +1,15 @@
-import type {Meta, StoryObj} from "@storybook/react";
-import {Diviser, DiviserProps} from "@/components/diviser/diviser";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Diviser, DiviserProps } from '../src';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "Data Display/Diviser",
+  title: 'Data Display/Diviser',
   component: Diviser,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
 } satisfies Meta<typeof Diviser>;

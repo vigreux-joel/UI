@@ -1,16 +1,16 @@
-import React, { FunctionComponent, useState } from "react";
-import { Tab, TabProps } from "./tab";
-import { Diviser } from "@/components/diviser/diviser";
-import { StylingHelper } from "@/components/utils/StylingHelper";
+import React, { FunctionComponent, useState } from 'react';
+import { Tab, TabProps } from './tab';
+import { StylingHelper } from '../utils';
+import { Diviser } from '../diviser';
 
 export enum TabsVariant {
-  Primary = "primary",
-  Secondary = "secondary",
+  Primary = 'primary',
+  Secondary = 'secondary',
 }
 
 export interface TabsProps {
   variant?: TabsVariant;
-  tabs: Omit<TabProps, "selected">[];
+  tabs: Omit<TabProps, 'selected'>[];
   onTabSelected?: (index: number) => void;
 }
 
@@ -22,7 +22,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
   const [selectedTab, setSelectedTab] = useState(0);
   const [underlineWidth, setUnderlineWidth] = useState(0);
   const [underlineOffset, setUnderlineOffset] = useState(0);
-  const handleChange = (index: number) => (event) => {
+  const handleChange = (index: number) => (event: React.MouseEvent) => {
     setSelectedTab(index);
     if (onTabSelected) {
       onTabSelected(index); // Call the callback
@@ -30,7 +30,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
   };
 
   const getTabClass = StylingHelper.classNames([
-    "flex-1",
+    'flex-1',
     {
       applyWhen: variant == TabsVariant.Primary,
       styles: [],
@@ -42,14 +42,14 @@ export const Tabs: FunctionComponent<TabsProps> = ({
   ]);
 
   const getUnderlineClass = StylingHelper.classNames([
-    "bg-primary  absolute  bottom-0 transition-all duration-300",
+    'bg-primary  absolute  bottom-0 transition-all duration-300',
     {
       applyWhen: variant == TabsVariant.Primary,
-      styles: ["h-[3px] rounded-t"],
+      styles: ['h-[3px] rounded-t'],
     },
     {
       applyWhen: variant == TabsVariant.Secondary,
-      styles: ["h-0.5"],
+      styles: ['h-0.5'],
     },
   ]);
   return (
@@ -72,7 +72,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
           );
         })}
         <span
-          style={{ width: underlineWidth + "px", left: underlineOffset + "px" }}
+          style={{ width: underlineWidth + 'px', left: underlineOffset + 'px' }}
           className={getUnderlineClass}
         ></span>
       </div>

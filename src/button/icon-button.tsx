@@ -1,14 +1,14 @@
-import type { FunctionComponent } from "react";
-import React, { useEffect } from "react";
-import { Icon } from "../icon/icon";
-import { IconDefinition } from "@fortawesome/pro-regular-svg-icons";
-import { StylingHelper } from "../utils/StylingHelper";
+import type { FunctionComponent } from 'react';
+import React, { useEffect } from 'react';
+import { Icon } from '../icon';
+import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+import { StylingHelper } from '../utils';
 
 export enum IconButtonVariant {
-  STANDARD = "standard",
-  FILLED = "filled",
-  TONAl = "tonal",
-  OUTLINED = "outlined",
+  STANDARD = 'standard',
+  FILLED = 'filled',
+  TONAl = 'tonal',
+  OUTLINED = 'outlined',
 }
 
 type BaseProps = {};
@@ -24,7 +24,7 @@ export type IconButtonProps = {
   href?: string;
   title?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
   className?: string;
 };
 
@@ -32,7 +32,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
   variant = IconButtonVariant.STANDARD,
   href,
   disabled,
-  type = "button",
+  type = 'button',
   title,
   arialLabel,
   onToggle,
@@ -62,7 +62,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
   }, [activated]);
 
   // Détermine le type de l'élément à rendre : un bouton ou un lien
-  const ElementType = href ? "a" : "button";
+  const ElementType = href ? 'a' : 'button';
 
   let linkProps: any = {};
   if (href) {
@@ -77,7 +77,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
   }
 
   const getButtonClass = StylingHelper.classNames([
-    "rounded-full overflow-hidden transition-all duration-300",
+    'rounded-full overflow-hidden transition-all duration-300',
     className,
     {
       applyWhen: variant == IconButtonVariant.FILLED,
@@ -86,14 +86,14 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: !disabled,
           styles: [
             {
-              "bg-surface-container": !isActive && Boolean(onToggle),
-              "bg-primary": isActive || !onToggle,
+              'bg-surface-container': !isActive && Boolean(onToggle),
+              'bg-primary': isActive || !onToggle,
             },
           ],
         },
         {
           applyWhen: Boolean(disabled),
-          styles: ["bg-on-surface/[0.12]"],
+          styles: ['bg-on-surface/[0.12]'],
         },
       ],
     },
@@ -104,14 +104,14 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: !disabled,
           styles: [
             {
-              "bg-surface-container": !isActive && Boolean(onToggle),
-              "bg-secondary-container": isActive || !onToggle,
+              'bg-surface-container': !isActive && Boolean(onToggle),
+              'bg-secondary-container': isActive || !onToggle,
             },
           ],
         },
         {
           applyWhen: Boolean(disabled),
-          styles: ["bg-on-surface/[0.12]"],
+          styles: ['bg-on-surface/[0.12]'],
         },
       ],
     },
@@ -122,8 +122,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: !disabled,
           styles: [
             {
-              "border border-outline": !isActive,
-              "border border-transparent bg-inverse-surface": isActive,
+              'border border-outline': !isActive,
+              'border border-transparent bg-inverse-surface': isActive,
             },
           ],
         },
@@ -131,8 +131,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: Boolean(disabled),
           styles: [
             {
-              "border border-on-surface/[0.12]": !isActive,
-              "border border-transparent bg-on-surface/[0.12]": isActive,
+              'border border-on-surface/[0.12]': !isActive,
+              'border border-transparent bg-on-surface/[0.12]': isActive,
             },
           ],
         },
@@ -140,7 +140,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
     },
   ]);
   const getStateClass = StylingHelper.classNames([
-    "p-2 flex rounded-full",
+    'p-2 flex rounded-full',
     {
       applyWhen: variant == IconButtonVariant.STANDARD,
       styles: [
@@ -148,8 +148,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: !disabled,
           styles: [
             {
-              "state-on-surface-variant": !isActive,
-              "state-primary": isActive,
+              'state-on-surface-variant': !isActive,
+              'state-primary': isActive,
             },
           ],
         },
@@ -162,8 +162,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: !disabled,
           styles: [
             {
-              "state-primary": !isActive && Boolean(onToggle),
-              "state-inverse-on-surface": isActive || !onToggle,
+              'state-primary': !isActive && Boolean(onToggle),
+              'state-inverse-on-surface': isActive || !onToggle,
             },
           ],
         },
@@ -176,8 +176,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: !disabled,
           styles: [
             {
-              "state-on-surface-variant": !isActive && Boolean(onToggle),
-              "state-on-secondary-container": isActive || !onToggle,
+              'state-on-surface-variant': !isActive && Boolean(onToggle),
+              'state-on-secondary-container': isActive || !onToggle,
             },
           ],
         },
@@ -190,8 +190,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: !disabled,
           styles: [
             {
-              "state-on-surface-variant": !isActive,
-              "state-on-primary": isActive,
+              'state-on-surface-variant': !isActive,
+              'state-on-primary': isActive,
             },
           ],
         },
@@ -199,14 +199,14 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
     },
   ]);
   const getIconClass = StylingHelper.classNames([
-    "h-5 w-5 transition-all duration-300",
+    'h-5 w-5 transition-all duration-300',
     {
       applyWhen: variant == IconButtonVariant.STANDARD,
       styles: [
         {
           applyWhen: !disabled,
           styles: [
-            { "text-on-surface-variant": !isActive, "text-primary": isActive },
+            { 'text-on-surface-variant': !isActive, 'text-primary': isActive },
           ],
         },
       ],
@@ -218,8 +218,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: !disabled,
           styles: [
             {
-              "text-primary": !isActive && Boolean(onToggle),
-              "text-on-primary": isActive || !onToggle,
+              'text-primary': !isActive && Boolean(onToggle),
+              'text-on-primary': isActive || !onToggle,
             },
           ],
         },
@@ -232,8 +232,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: !disabled,
           styles: [
             {
-              "text-on-surface-variant": !isActive && Boolean(onToggle),
-              "text-on-secondary-container": isActive || !onToggle,
+              'text-on-surface-variant': !isActive && Boolean(onToggle),
+              'text-on-secondary-container': isActive || !onToggle,
             },
           ],
         },
@@ -246,8 +246,8 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
           applyWhen: !disabled,
           styles: [
             {
-              "text-on-surface-variant": !isActive,
-              "text-inverse-on-surface": isActive,
+              'text-on-surface-variant': !isActive,
+              'text-inverse-on-surface': isActive,
             },
           ],
         },
@@ -255,7 +255,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
     },
     {
       applyWhen: Boolean(disabled),
-      styles: ["text-on-surface/[0.38]"],
+      styles: ['text-on-surface/[0.38]'],
     },
   ]);
   return (

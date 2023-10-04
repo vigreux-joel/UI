@@ -1,18 +1,17 @@
-import type {Meta, StoryObj} from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {Tab, TabProps} from "@/components/tabs/tab";
-import {TabsVariant} from "@/components/tabs/tabs";
-import {faHome} from "@fortawesome/pro-regular-svg-icons";
+import { faHome } from '@fortawesome/pro-regular-svg-icons';
+import { Tab, TabProps, TabsVariant } from '../src';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "Navigation/Tab",
+  title: 'Navigation/Tab',
   component: Tab,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     type: { table: { disable: true } },
@@ -35,7 +34,7 @@ const createTabStory = (variant: TabsVariant, args?: Partial<TabProps>) => {
     </div>
   );
   tabStory.args = {
-    label: "Tab",
+    label: 'Tab',
     variant: variant,
     ...args,
   };

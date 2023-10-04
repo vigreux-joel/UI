@@ -1,15 +1,16 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
-import { StylingHelper } from "@/components/utils/StylingHelper";
-import { Tabs, TabsVariant } from "../tabs/tabs";
-import { IconButton } from "../button/icon-button";
+import React, { FunctionComponent, useEffect, useState } from 'react';
+
+import { Tabs, TabsVariant } from '../tabs';
+import { IconButton } from '../button';
 import {
   faClipboard,
   faClipboardCheck,
-} from "@fortawesome/pro-regular-svg-icons";
-import { Highlight, themes } from "prism-react-renderer";
-import classNames from "classnames";
-import { LivePreview, LiveProvider } from "react-live";
-import { Diviser } from "@/components/diviser/diviser";
+} from '@fortawesome/pro-regular-svg-icons';
+import { Highlight, themes } from 'prism-react-renderer';
+import classNames from 'classnames';
+import { LivePreview, LiveProvider } from 'react-live';
+import { StylingHelper } from '../utils';
+import { Diviser } from '../diviser';
 
 export interface CodePreviewProps {
   className?: string;
@@ -31,7 +32,7 @@ export const CodePreview: FunctionComponent<CodePreviewProps> = ({
       await navigator.clipboard.writeText(code);
       setIsCodeCopied(true);
     } catch (err) {
-      console.error("Failed to copy code: ", err);
+      console.error('Failed to copy code: ', err);
     }
   };
 
@@ -47,31 +48,31 @@ export const CodePreview: FunctionComponent<CodePreviewProps> = ({
     }
   }, [isCodeCopied]);
 
-  const getDiviserClass = StylingHelper.classNames([className, ""]);
+  const getDiviserClass = StylingHelper.classNames([className, '']);
 
   return (
     <div
       className={classNames(
-        "border-outline-variant w-full border bg-surface rounded-xl overflow-hidden",
+        'border-outline-variant w-full border bg-surface rounded-xl overflow-hidden',
         { dark: !renderPreview || selectedTab == 1 }
       )}
     >
       <div
-        className={classNames("flex justify-between  relative", {
-          "items-center": renderPreview,
+        className={classNames('flex justify-between  relative', {
+          'items-center': renderPreview,
         })}
       >
         {renderPreview && (
           <Tabs
             onTabSelected={setSelectedTab}
             variant={TabsVariant.Secondary}
-            tabs={[{ label: "Preview" }, { label: "Code" }]}
+            tabs={[{ label: 'Preview' }, { label: 'Code' }]}
           />
         )}
         <IconButton
           activated={isCodeCopied}
-          className={classNames("mr-2", {
-            "absolute right-0 top-2": !renderPreview,
+          className={classNames('mr-2', {
+            'absolute right-0 top-2': !renderPreview,
           })}
           arialLabel="Copy code to clipboard"
           onToggle={copyCodeToClipboard}

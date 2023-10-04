@@ -1,17 +1,17 @@
-import type {Meta, StoryObj} from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {IconButton, IconButtonProps, IconButtonVariant,} from "@/components/button/icon-button";
-import {faGear as farGear} from "@fortawesome/pro-regular-svg-icons";
-import {faGear as fasGear} from "@fortawesome/pro-solid-svg-icons";
+import { faGear as farGear } from '@fortawesome/pro-regular-svg-icons';
+import { faGear as fasGear } from '@fortawesome/pro-solid-svg-icons';
+import { IconButton, IconButtonProps, IconButtonVariant } from '../src';
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "Inputs/IconButton",
+  title: 'Inputs/IconButton',
   component: IconButton,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     type: { table: { disable: true } },
@@ -57,7 +57,7 @@ const createIconButtonStory = (
   if (toggle) {
     IconButtonStory.args = {
       variant: variant,
-      arialLabel: "Action description",
+      arialLabel: 'Action description',
       onToggle: (isActive: boolean) => {},
       icon: farGear,
       iconSelected: fasGear,
@@ -65,7 +65,7 @@ const createIconButtonStory = (
   } else {
     IconButtonStory.args = {
       variant: variant,
-      arialLabel: "Action description",
+      arialLabel: 'Action description',
       icon: farGear,
     };
   }
