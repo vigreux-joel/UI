@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { createMaterialTheme } from "./src/plugins/tailwind-material/src/main";
+import { createMaterialTheme } from "../tailwind-material/src";
 
 const materialTailwind = createMaterialTheme(
   {
