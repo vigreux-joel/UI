@@ -39,3 +39,7 @@ yarn.lock
 .idea
 /storybook-static/
 /build-storybook.log
+*.log
+node_modules
+.cache
+dist

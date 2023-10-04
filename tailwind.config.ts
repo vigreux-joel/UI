@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { createMaterialTheme } from "../tailwind-material/src";
+import { createMaterialTheme } from "@udixio/tailwind-material";
 
 const materialTailwind = createMaterialTheme(
   {

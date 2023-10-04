@@ -1,17 +1,17 @@
-import type {Meta, StoryObj} from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import {Button, ButtonProps, ButtonVariant} from "@/components/button/button";
-import {faPlus} from "@fortawesome/pro-regular-svg-icons";
+import { Button, ButtonProps, ButtonVariant } from '../src';
+import { faPlus } from '@fortawesome/pro-regular-svg-icons';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "Inputs/Button",
+  title: 'Inputs/Button',
   component: Button,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     type: { table: { disable: true } },
@@ -39,7 +39,7 @@ const createButtonStory = (variant: ButtonVariant) => {
     </div>
   );
   ButtonStory.args = {
-    label: "Label",
+    label: 'Label',
     variant: variant,
   };
   return ButtonStory;
