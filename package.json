@@ -36,9 +36,6 @@
   "jest": {
     "testEnvironment": "jsdom"
   },
-  "peerDependencies": {
-    "react": ">=16"
-  },
   "engines": {
     "node": ">=12"
   },
@@ -56,13 +53,10 @@
     "@fontsource/roboto": "^5.0.8",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
-    "@fortawesome/pro-duotone-svg-icons": "^6.4.2",
-    "@fortawesome/pro-light-svg-icons": "^6.4.2",
-    "@fortawesome/pro-regular-svg-icons": "^6.4.2",
-    "@fortawesome/pro-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@material/material-color-utilities": "^0.2.7",
     "@material/ripple": "^14.0.0",
+    "@storybook/nextjs": "^7.4.6",
     "@types/node": "20.6.0",
     "@types/parse-color": "^1.0.1",
     "@types/react": "18.2.21",
@@ -80,10 +74,19 @@
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   },
+  "peerDependencies": {
+    "react": ">=16",
+    "@fortawesome/pro-duotone-svg-icons": "^6.4.2",
+    "@fortawesome/pro-light-svg-icons": "^6.4.2",
+    "@fortawesome/pro-regular-svg-icons": "^6.4.2",
+    "@fortawesome/pro-solid-svg-icons": "^6.4.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.23.0",
     "@babel/plugin-syntax-jsx": "^7.22.5",
     "@babel/preset-react": "^7.22.15",
+    "@size-limit/esbuild": "^9.0.0",
+    "@size-limit/esbuild-why": "^9.0.0",
     "@size-limit/preset-small-lib": "^9.0.0",
     "@storybook/addon-a11y": "^7.4.1",
     "@storybook/addon-essentials": "^7.4.0",
