@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect } from 'react';
 
-import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { TabsVariant } from './tabs';
 import { StylingHelper } from '../utils';
 import { Icon } from '../icon';

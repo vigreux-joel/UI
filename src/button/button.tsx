@@ -1,7 +1,8 @@
 import type { FunctionComponent } from 'react';
 import { Icon } from '../icon';
-import { IconDefinition } from '@fortawesome/pro-regular-svg-icons';
+
 import { StylingHelper } from '../utils';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export enum ButtonVariant {
   Filled = 'filled',
