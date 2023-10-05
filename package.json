@@ -1,6 +1,6 @@
 {
   "name": "@udixio/ui",
-  "version": "0.1.0",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "author": "Joël",
   "main": "dist/index.js",
@@ -139,6 +139,5 @@
     "typescript": "^5.2.2",
     "vite": "^4.4.10"
   },
-  "readme": "ERROR: No README data found!",
-  "_id": "storybook@0.1.0"
+  "readme": "ERROR: No README data found!"
 }
