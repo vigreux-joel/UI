@@ -11,8 +11,6 @@ export enum IconButtonVariant {
   OUTLINED = 'outlined',
 }
 
-type BaseProps = {};
-
 export type IconButtonProps = {
   variant?: IconButtonVariant;
   disabled?: boolean;
@@ -80,7 +78,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
     'rounded-full overflow-hidden transition-all duration-300',
     className,
     {
-      applyWhen: variant == IconButtonVariant.FILLED,
+      applyWhen: variant === IconButtonVariant.FILLED,
       styles: [
         {
           applyWhen: !disabled,
@@ -98,7 +96,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
       ],
     },
     {
-      applyWhen: variant == IconButtonVariant.TONAl,
+      applyWhen: variant === IconButtonVariant.TONAl,
       styles: [
         {
           applyWhen: !disabled,
@@ -116,7 +114,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
       ],
     },
     {
-      applyWhen: variant == IconButtonVariant.OUTLINED,
+      applyWhen: variant === IconButtonVariant.OUTLINED,
       styles: [
         {
           applyWhen: !disabled,
@@ -142,7 +140,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
   const getStateClass = StylingHelper.classNames([
     'p-2 flex rounded-full',
     {
-      applyWhen: variant == IconButtonVariant.STANDARD,
+      applyWhen: variant === IconButtonVariant.STANDARD,
       styles: [
         {
           applyWhen: !disabled,
@@ -156,7 +154,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
       ],
     },
     {
-      applyWhen: variant == IconButtonVariant.FILLED,
+      applyWhen: variant === IconButtonVariant.FILLED,
       styles: [
         {
           applyWhen: !disabled,
@@ -170,7 +168,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
       ],
     },
     {
-      applyWhen: variant == IconButtonVariant.TONAl,
+      applyWhen: variant === IconButtonVariant.TONAl,
       styles: [
         {
           applyWhen: !disabled,
@@ -184,7 +182,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
       ],
     },
     {
-      applyWhen: variant == IconButtonVariant.OUTLINED,
+      applyWhen: variant === IconButtonVariant.OUTLINED,
       styles: [
         {
           applyWhen: !disabled,
@@ -201,7 +199,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
   const getIconClass = StylingHelper.classNames([
     'h-5 w-5 transition-all duration-300',
     {
-      applyWhen: variant == IconButtonVariant.STANDARD,
+      applyWhen: variant === IconButtonVariant.STANDARD,
       styles: [
         {
           applyWhen: !disabled,
@@ -212,7 +210,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
       ],
     },
     {
-      applyWhen: variant == IconButtonVariant.FILLED,
+      applyWhen: variant === IconButtonVariant.FILLED,
       styles: [
         {
           applyWhen: !disabled,
@@ -226,7 +224,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
       ],
     },
     {
-      applyWhen: variant == IconButtonVariant.TONAl,
+      applyWhen: variant === IconButtonVariant.TONAl,
       styles: [
         {
           applyWhen: !disabled,
@@ -240,7 +238,7 @@ export const IconButton: FunctionComponent<IconButtonProps> = ({
       ],
     },
     {
-      applyWhen: variant == IconButtonVariant.OUTLINED,
+      applyWhen: variant === IconButtonVariant.OUTLINED,
       styles: [
         {
           applyWhen: !disabled,

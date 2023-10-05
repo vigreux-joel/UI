@@ -32,11 +32,11 @@ export const Tabs: FunctionComponent<TabsProps> = ({
   const getTabClass = StylingHelper.classNames([
     'flex-1',
     {
-      applyWhen: variant == TabsVariant.Primary,
+      applyWhen: variant === TabsVariant.Primary,
       styles: [],
     },
     {
-      applyWhen: variant == TabsVariant.Secondary,
+      applyWhen: variant === TabsVariant.Secondary,
       styles: [],
     },
   ]);
@@ -44,11 +44,11 @@ export const Tabs: FunctionComponent<TabsProps> = ({
   const getUnderlineClass = StylingHelper.classNames([
     'bg-primary  absolute  bottom-0 transition-all duration-300',
     {
-      applyWhen: variant == TabsVariant.Primary,
+      applyWhen: variant === TabsVariant.Primary,
       styles: ['h-[3px] rounded-t'],
     },
     {
-      applyWhen: variant == TabsVariant.Secondary,
+      applyWhen: variant === TabsVariant.Secondary,
       styles: ['h-0.5'],
     },
   ]);

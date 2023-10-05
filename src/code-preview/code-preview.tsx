@@ -9,7 +9,6 @@ import {
 import { Highlight, themes } from 'prism-react-renderer';
 import classNames from 'classnames';
 import { LivePreview, LiveProvider } from 'react-live';
-import { StylingHelper } from '../utils';
 import { Diviser } from '../diviser';
 
 export interface CodePreviewProps {
@@ -48,13 +47,11 @@ export const CodePreview: FunctionComponent<CodePreviewProps> = ({
     }
   }, [isCodeCopied]);
 
-  const getDiviserClass = StylingHelper.classNames([className, '']);
-
   return (
     <div
       className={classNames(
         'border-outline-variant w-full border bg-surface rounded-xl overflow-hidden',
-        { dark: !renderPreview || selectedTab == 1 }
+        { dark: !renderPreview || selectedTab === 1 }
       )}
     >
       <div

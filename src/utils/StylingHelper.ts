@@ -1,4 +1,4 @@
-import classnames from "classnames";
+import classnames from 'classnames';
 
 type StyleSet =
   | undefined
@@ -8,25 +8,25 @@ type StyleSet =
 
 export class StylingHelper {
   static classNames(styles?: StyleSet | StyleSet[]): string {
-    if (!styles) return "";
+    if (!styles) return '';
 
     const compiledStyles = Array.isArray(styles)
       ? styles.flatMap((item) => this.compileStyles(item))
       : this.compileStyles(styles);
 
-    return compiledStyles.join(" ");
+    return compiledStyles.join(' ');
   }
 
   private static compileStyles(styles: StyleSet): string[] {
     if (!styles) return [];
 
-    if (typeof styles === "string") {
+    if (typeof styles === 'string') {
       return [styles];
     }
 
     if (
-      "applyWhen" in styles &&
-      typeof styles.styles !== "boolean" &&
+      'applyWhen' in styles &&
+      typeof styles.styles !== 'boolean' &&
       styles.applyWhen
     ) {
       if (Array.isArray(styles.styles)) {

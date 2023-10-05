@@ -83,11 +83,11 @@ export const Tab: FunctionComponent<TabProps> = ({
     className,
     'bg-surface',
     {
-      applyWhen: Boolean(icon && label) && variant == TabsVariant.Primary,
+      applyWhen: Boolean(icon && label) && variant === TabsVariant.Primary,
       styles: ['h-16'],
     },
     {
-      applyWhen: !(Boolean(icon && label) && variant == TabsVariant.Primary),
+      applyWhen: !(Boolean(icon && label) && variant === TabsVariant.Primary),
       styles: ['h-12'],
     },
   ]);
@@ -95,7 +95,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   const getStateLayerClass = StylingHelper.classNames([
     'flex px-4 justify-center h-full',
     {
-      applyWhen: variant == TabsVariant.Primary,
+      applyWhen: variant === TabsVariant.Primary,
       styles: [
         {
           'state-on-surface': !selected,
@@ -104,7 +104,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       ],
     },
     {
-      applyWhen: variant == TabsVariant.Secondary,
+      applyWhen: variant === TabsVariant.Secondary,
       styles: ['state-on-surface'],
     },
   ]);
@@ -114,7 +114,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       'pb-3.5': Boolean(label && !icon),
     },
     {
-      applyWhen: variant == TabsVariant.Primary,
+      applyWhen: variant === TabsVariant.Primary,
       styles: [
         'flex-col items-center',
         {
@@ -124,7 +124,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       ],
     },
     {
-      applyWhen: variant == TabsVariant.Secondary,
+      applyWhen: variant === TabsVariant.Secondary,
       styles: [
         {
           'flex-col items-center': Boolean(!(label && icon)),
@@ -136,7 +136,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   const getIconClass = StylingHelper.classNames([
     'h-6 w-6 p-0.5 !box-border',
     {
-      applyWhen: variant == TabsVariant.Primary,
+      applyWhen: variant === TabsVariant.Primary,
       styles: [
         {
           'text-on-surface-variant': !selected,
@@ -145,7 +145,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       ],
     },
     {
-      applyWhen: variant == TabsVariant.Secondary,
+      applyWhen: variant === TabsVariant.Secondary,
       styles: [
         {
           'text-on-surface-variant': !selected,
@@ -158,7 +158,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   const getLabelTextClass = StylingHelper.classNames([
     'title-small',
     {
-      applyWhen: variant == TabsVariant.Primary,
+      applyWhen: variant === TabsVariant.Primary,
       styles: [
         {
           'text-on-surface-variant': !selected,
@@ -167,7 +167,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       ],
     },
     {
-      applyWhen: variant == TabsVariant.Secondary,
+      applyWhen: variant === TabsVariant.Secondary,
       styles: [
         {
           'text-on-surface-variant': !selected,
