@@ -1,3 +1,10 @@
+# [1.0.0-beta.2](https://github.com/Udixio/UI/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2023-10-05)
+
+
+### Bug Fixes
+
+* Update unit test and configuration settings ([21aa7e8](https://github.com/Udixio/UI/commit/21aa7e84ffd6a8ae2cd177affcd5321915eb97e0))
+
 # 1.0.0-beta.1 (2023-10-05)
 
 
