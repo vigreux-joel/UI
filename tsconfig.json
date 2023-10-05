@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "moduleResolution": "bundler",
-    "jsx": "preserve",
+    "module": "esnext",
+    "moduleResolution": "node",
     "esModuleInterop": true,
+    "jsx": "react-jsx"
   },
-  "extends": "@tsconfig/vite-react/tsconfig.json",
+  "extends": "@tsconfig/recommended/tsconfig.json",
   "include": ["src", "types"]
 }
