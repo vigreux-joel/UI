@@ -19,10 +19,10 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Create .npmrc
         run: |
-          echo "@fortawesome:registry=https://npm.fontawesome.com/" > .npmrc
-          echo "//npm.fontawesome.com/:_authToken=$FONTAWESOME_TOKEN" >> .npmrc
-        env:
-          FONTAWESOME_TOKEN: ${{ secrets.FONTAWESOME_TOKEN }}
+          const fs = require('fs');
+          fs.writeFileSync('.npmrc', "@fortawesome:registry=https://npm.fontawesome.com/\n");
+          fs.appendFileSync('.npmrc', "//npm.fontawesome.com/:_authToken=${{ secrets.FONTAWESOME_TOKEN }}\n");
+        shell: node
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 
