@@ -1,3 +1,10 @@
+# [1.0.0-beta.4](https://github.com/Udixio/UI/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2023-10-05)
+
+
+### Bug Fixes
+
+* Reduce support to Ubuntu for GitHub Actions ([15d2aa2](https://github.com/Udixio/UI/commit/15d2aa2412702cf480dd1725b0d4c3d262c32828))
+
 # [1.0.0-beta.3](https://github.com/Udixio/UI/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2023-10-05)
 
 
