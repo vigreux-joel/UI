@@ -1,3 +1,10 @@
+# [1.0.0-beta.3](https://github.com/Udixio/UI/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2023-10-05)
+
+
+### Bug Fixes
+
+* Improve cross-platform compatibility in workflow file ([4de90fe](https://github.com/Udixio/UI/commit/4de90fe2d46c8478d77170f60e180e9b9977d2d5))
+
 # [1.0.0-beta.2](https://github.com/Udixio/UI/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2023-10-05)
 
 
