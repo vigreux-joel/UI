@@ -33,8 +33,6 @@ yarn-error.log*
 # typescript
 ClassNameHelper.tsbuildinfo
 next-env.d.ts
-
-package-lock.json
 yarn.lock
 .idea
 /storybook-static/
