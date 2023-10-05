@@ -10,7 +10,12 @@ module.exports = {
     [
       '@semantic-release/github',
       {
-        assets: ['dist/**', '*.tgz'],
+        assets: [
+          'dist/index.js',
+          'dist/ui.cjs.development.js',
+          'dist/ui.cjs.production.min.js',
+          'dist/ui.esm.js',
+        ],
       },
     ],
 
