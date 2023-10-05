@@ -13,12 +13,16 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
       - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-
+      - name: Create .npmrc
+        run: |
+          echo "@fortawesome:registry=https://npm.fontawesome.com/" > .npmrc
+          echo "//npm.fontawesome.com/:_authToken=$FONTAWESOME_TOKEN" >> .npmrc
+        env:
+          FONTAWESOME_TOKEN: ${{ secrets.FONTAWESOME_TOKEN }}
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 

@@ -13,12 +13,16 @@ jobs:
         with:
           fetch-depth: 0 # Important: This makes sure the actual branch commit history is fetched
           persist-credentials: false # Important: This makes sure the token used is the one provided above, not the default token actions/checkout provides
-
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-
+      - name: Create .npmrc
+        run: |
+          echo "@fortawesome:registry=https://npm.fontawesome.com/" > .npmrc
+          echo "//npm.fontawesome.com/:_authToken=$FONTAWESOME_TOKEN" >> .npmrc
+        env:
+          FONTAWESOME_TOKEN: ${{ secrets.FONTAWESOME_TOKEN }}
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 
