@@ -1,3 +1,10 @@
+# [1.0.0-beta.5](https://github.com/Udixio/UI/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2023-10-05)
+
+
+### Bug Fixes
+
+* Update assets path in semantic-release config ([d92f5c6](https://github.com/Udixio/UI/commit/d92f5c676006565966092bcbc65e9687f6f48d54))
+
 # [1.0.0-beta.4](https://github.com/Udixio/UI/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2023-10-05)
 
 
