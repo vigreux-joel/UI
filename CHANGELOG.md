@@ -1,3 +1,11 @@
+# [1.0.0-beta.6](https://github.com/Udixio/UI/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2023-10-06)
+
+
+### Bug Fixes
+
+* Move React and ReactDOM from dependencies to peerDependencies ([fb56eb0](https://github.com/Udixio/UI/commit/fb56eb0a5b1beea6ac746b08100a172ce30a9c26))
+* Update Chromatic workflow triggers ([b5a18f8](https://github.com/Udixio/UI/commit/b5a18f84fcfee8a7a80ef178a2109908ec5c7acc))
+
 # [1.0.0-beta.5](https://github.com/Udixio/UI/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2023-10-05)
 
 
