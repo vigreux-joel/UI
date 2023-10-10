@@ -1,3 +1,15 @@
+# [1.0.0-beta.7](https://github.com/Udixio/UI/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2023-10-10)
+
+
+### Bug Fixes
+
+* Add repository field to package.json ([a8f27dc](https://github.com/Udixio/UI/commit/a8f27dc050c2de19cf6215dd6d0894d344f002ce))
+
+
+### Features
+
+* Refactor button component for better type safety and functionality ([a5551f9](https://github.com/Udixio/UI/commit/a5551f9399b1c0d9e830dbc46d74ce0538c68f08))
+
 # [1.0.0-beta.6](https://github.com/Udixio/UI/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2023-10-06)
 
 
