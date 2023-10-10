@@ -1,4 +1,4 @@
-import type { FunctionComponent } from 'react';
+import type { FunctionComponent, MouseEventHandler } from 'react';
 import { Icon } from '../icon';
 
 import { StylingHelper } from '../utils';
@@ -13,16 +13,55 @@ export enum ButtonVariant {
 }
 
 export interface ButtonProps {
-  href?: string;
-  disabled?: boolean;
-  title?: string;
+  /**
+   * The label is the text that is displayed on the button.
+   */
   label: string;
-  icon?: IconDefinition;
+
+  /**
+   * The onClick function is called when the button is clicked.
+   */
+  onClick?: MouseEventHandler<HTMLElement> | undefined;
+
+  /**
+   * The button variant determines the style of the button.
+   */
   variant?: ButtonVariant;
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void | undefined;
+
+  /**
+   * The 'type' of the button, defaults to 'button'. One of 'button', 'submit', 'reset', or undefined.
+   */
   type?: 'button' | 'submit' | 'reset' | undefined;
+
+  /**
+   * If present, the button will be rendered as a link with this href.
+   */
+  href?: string;
+
+  /**
+   * If set to true and if href is provided, the link will be opened in a new tab.
+   */
+  external?: boolean;
+
+  /**
+   * The title is used as the tooltip text when the button is hovered.
+   */
+  title?: string;
+
+  /**
+   * Disables the button if set to true.
+   */
+  disabled?: boolean;
+
+  /**
+   * An optional icon to display in the button.
+   */
+  icon?: IconDefinition;
 }
 
+/**
+ * The Button component is a versatile component that can be used to trigger actions or to navigate to different sections of the application
+ */
 export const Button: FunctionComponent<ButtonProps> = ({
   variant = ButtonVariant.Filled,
   disabled,
@@ -32,6 +71,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   label,
   onClick,
   type,
+  external,
 }) => {
   // Détermine le type de l'élément à rendre : un bouton ou un lien
   const ElementType = href ? 'a' : 'button';
@@ -46,6 +86,9 @@ export const Button: FunctionComponent<ButtonProps> = ({
   if (href) {
     linkProps.href = href;
     linkProps.title = title;
+    if (external) {
+      linkProps.target = '_blank';
+    }
   }
 
   let buttonProps: any = {};
