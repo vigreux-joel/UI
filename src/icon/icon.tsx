@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type React from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import classNames from 'classnames';
 
 export interface Props {
   icon: IconDefinition;
   colors?: string[];
-  className: string;
+  className?: string;
 }
 
 export const Icon: React.FC<Props> = ({ icon, colors = [], className }) => {
@@ -25,7 +26,9 @@ export const Icon: React.FC<Props> = ({ icon, colors = [], className }) => {
   return (
     <FontAwesomeIcon
       icon={icon}
-      className={className}
+      className={classNames(className, {
+        'h-full': !className?.includes('h-'),
+      })}
       style={getColorStyle(colors)}
     />
   );
