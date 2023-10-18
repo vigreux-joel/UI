@@ -1,3 +1,10 @@
+# [1.0.0-beta.9](https://github.com/Udixio/UI/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2023-10-18)
+
+
+### Bug Fixes
+
+* Add optional className attributes to button component ([06cd679](https://github.com/Udixio/UI/commit/06cd679d79bb821acab534ebc474630552b9925f))
+
 # [1.0.0-beta.8](https://github.com/Udixio/UI/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2023-10-11)
 
 
