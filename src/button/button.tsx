@@ -57,6 +57,26 @@ export interface ButtonProps {
    * An optional icon to display in the button.
    */
   icon?: IconDefinition;
+
+  /**
+   * Optional class name for the button component.
+   */
+  className?: string;
+
+  /**
+   * Optional class name for the icon in the button.
+   */
+  iconClassName?: string;
+
+  /**
+   * Optional class name for the label in the button.
+   */
+  labelClassName?: string;
+
+  /**
+   * Optional class name for the state layer in the button.
+   */
+  stateClassName?: string;
 }
 
 /**
@@ -72,6 +92,10 @@ export const Button: FunctionComponent<ButtonProps> = ({
   onClick,
   type,
   external,
+  className,
+  iconClassName,
+  labelClassName,
+  stateClassName,
 }) => {
   // Détermine le type de l'élément à rendre : un bouton ou un lien
   const ElementType = href ? 'a' : 'button';
@@ -98,6 +122,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   }
 
   const getButtonClass = StylingHelper.classNames([
+    className,
     'button group rounded-full',
     {
       applyWhen: variant === ButtonVariant.Elevated,
@@ -126,6 +151,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   ]);
 
   const getStateLayerClass = StylingHelper.classNames([
+    stateClassName,
     'state-layer flex gap-2 justify-center rounded-full  items-center px-6 py-2.5',
     {
       applyWhen: variant === ButtonVariant.Elevated,
@@ -175,6 +201,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
     },
   ]);
   const getIconClass = StylingHelper.classNames([
+    iconClassName,
     'icon h-[18px] w-[18px]',
     {
       applyWhen: variant === ButtonVariant.Elevated,
@@ -223,7 +250,8 @@ export const Button: FunctionComponent<ButtonProps> = ({
     },
   ]);
   const getLabelTextClass = StylingHelper.classNames([
-    'label-text',
+    labelClassName,
+    'label-text label-large',
     {
       applyWhen: variant === ButtonVariant.Elevated,
       styles: [

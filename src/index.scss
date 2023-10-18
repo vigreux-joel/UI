@@ -5,3 +5,43 @@
 @import "@fontsource/roboto/400.css";
 @import "@fontsource/roboto/400-italic.css";
 @import "@fontsource/roboto/500.css";
+
+
+@layer utilities {
+  .title-large {
+    @apply text-[22px] lg:text-[24px]  leading-[28px] lg:leading-[32px] font-roboto font-normal;
+  }
+
+  .title-medium {
+    @apply text-[16px] lg:text-[18px]  leading-[24px] lg:leading-[27px] font-medium tracking-[0.15px] font-roboto;
+  }
+
+  .title-small {
+    @apply text-[14px] lg:text-[16px]  leading-[20px] lg:leading-[22px] font-medium tracking-[0.1px] font-roboto;
+  }
+
+  .label-large {
+    @apply text-[14px] lg:text-[16px]  leading-[20px] lg:leading-[22px] font-medium tracking-[0.1px]  font-roboto;
+  }
+
+  .label-medium {
+    @apply text-[12px] lg:text-[14px]  leading-[16px] lg:leading-[18px] font-medium tracking-[0.5px] font-roboto;
+  }
+
+  .label-small {
+    @apply text-[11px] lg:text-[12px]  leading-[16px] lg:leading-[18px] font-medium tracking-[0.5px] font-roboto;
+  }
+
+  .body-large {
+    @apply text-[16px] lg:text-[18px]  leading-[24px] lg:leading-[27px] tracking-[0.5px] font-roboto;
+  }
+
+  .body-medium {
+    @apply text-[14px] lg:text-[16px]  leading-[20px] lg:leading-[22px] tracking-[0.25px] font-roboto;
+  }
+
+  .body-small {
+    @apply text-[12px] lg:text-[14px]  leading-[16px] lg:leading-[18px] tracking-[0.4px] font-roboto;
+  }
+
+}
