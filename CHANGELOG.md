@@ -1,3 +1,10 @@
+# [1.0.0-beta.8](https://github.com/Udixio/UI/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2023-10-11)
+
+
+### Bug Fixes
+
+* Enhance Icon component with className modifiers ([5f309ea](https://github.com/Udixio/UI/commit/5f309eaaef65e5d4a07430c946e3138fc76fd031))
+
 # [1.0.0-beta.7](https://github.com/Udixio/UI/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2023-10-10)
 
 
