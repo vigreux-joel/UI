@@ -123,7 +123,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
 
   const getButtonClass = StylingHelper.classNames([
     className,
-    'button group rounded-full',
+    'button group rounded-full inline-block',
     {
       applyWhen: variant === ButtonVariant.Elevated,
       styles: [

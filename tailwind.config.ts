@@ -1,14 +1,12 @@
 import type { Config } from 'tailwindcss';
-import { createMaterialTheme } from '@udixio/tailwind-material';
+import { createMaterialTheme } from '../tailwind-material/src';
 
-const materialTailwind = createMaterialTheme(
-  {
+const materialTailwind = createMaterialTheme({
+  colors: {
     primary: '#6750A4',
-    secondary: '#958DA5',
-    tertiary: '#B58392',
   },
-  'class'
-);
+  darkMode: 'class',
+});
 
 const config: Config = {
   darkMode: 'class',
