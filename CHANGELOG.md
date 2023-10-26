@@ -1,3 +1,10 @@
+# [1.0.0-beta.10](https://github.com/Udixio/UI/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2023-10-26)
+
+
+### Bug Fixes
+
+* Correct background color for links used as buttons and update Tailwind Material ([68e5381](https://github.com/Udixio/UI/commit/68e5381b88dd61e39db1969a31d28db9db2fed52))
+
 # [1.0.0-beta.9](https://github.com/Udixio/UI/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2023-10-18)
 
 
