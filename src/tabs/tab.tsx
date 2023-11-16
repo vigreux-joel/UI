@@ -156,7 +156,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   ]);
 
   const getLabelTextClass = StylingHelper.classNames([
-    'title-small',
+    'text-title-small',
     {
       applyWhen: variant === TabsVariant.Primary,
       styles: [

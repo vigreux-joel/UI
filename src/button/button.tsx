@@ -251,7 +251,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   ]);
   const getLabelTextClass = StylingHelper.classNames([
     labelClassName,
-    'label-text label-large',
+    'label-text text-label-large',
     {
       applyWhen: variant === ButtonVariant.Elevated,
       styles: [

@@ -3,7 +3,9 @@ import { createMaterialTheme } from '../tailwind-material/src';
 
 const materialTailwind = createMaterialTheme({
   colors: {
-    primary: '#6750A4',
+    palette: {
+      primary: '#6750A4',
+    },
   },
   darkMode: 'class',
 });
