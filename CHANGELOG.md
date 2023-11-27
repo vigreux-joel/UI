@@ -3,7 +3,7 @@
 
 ### Features
 
-* Updated MaterialFonts, typography styles, and Tailwind Material version ([968b7f5](https://github.com/Udixio/UI/commit/968b7f5bd341f0cbd7c89be05c58635396af83c4))
+* Updated FontTheme, typography styles, and Tailwind Material version ([968b7f5](https://github.com/Udixio/UI/commit/968b7f5bd341f0cbd7c89be05c58635396af83c4))
 
 # [1.0.0-beta.10](https://github.com/Udixio/UI/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2023-10-26)
 

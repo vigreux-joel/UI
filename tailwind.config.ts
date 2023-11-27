@@ -17,12 +17,9 @@ const config: Config = {
     './stories/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    colors: {
-      ...materialTailwind.colors,
-    },
-    fontFamily: {
-      ...materialTailwind.fontFamily,
-    },
+    colors: materialTailwind.colors,
+    fontFamily: materialTailwind.fontFamily,
+
     extend: {
       boxShadow: {
         '1': '0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)',
